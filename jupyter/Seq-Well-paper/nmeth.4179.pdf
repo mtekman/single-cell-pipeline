@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Seq-Well: portable, low-cost RNA sequencing of single cells at high throughput | Nature Methods</title>
+    
+        <link rel="dns-prefetch" href="//nexus.ensighten.com"/>
+<link rel="dns-prefetch" href="//ajax.googleapis.com"/>
+<link rel="dns-prefetch" href="//fonts.googleapis.com"/>
+<link rel="dns-prefetch" href="//fonts.gstatic.com"/>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=2.5,user-scalable=yes"/>
+
+
+<script>
+    (function(e){var t=e.documentElement,n=e.implementation;t.className='js';if(n&&n.hasFeature('http://www.w3.org/TR/SVG11/feature#Image','1.1')){t.className+=' svg'}})(document)
+</script>
+
+
+    <link rel="apple-touch-icon" sizes="114x114" href="/static/images/favicon-114x114.14310470.png"/>
+    <link rel="apple-touch-icon" sizes="144x144" href="/static/images/favicon-144x144.3e61d1f7.png"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/images/favicon-180x180.5789768d.png"/>
+    <link rel="icon" type="image/png" href="/static/images/favicon-16x16.bfd0e25c.png" sizes="16x16"/>
+    <link rel="icon" type="image/png" href="/static/images/favicon-32x32.1c4a0334.png" sizes="32x32"/>
+    <link rel="icon" type="image/png" href="/static/images/favicon-96x96.14ff9c7f.png" sizes="96x96"/>
+    <link rel="icon" type="image/png" href="/static/images/favicon-194x194.5789768d.png" sizes="194x194"/>
+    <link rel="shortcut icon" href="/static/images/favicon.14515a9f.ico"/>
+    <meta name="msapplication-TileColor" content="#940720"/>
+    <meta name="msapplication-TileImage" content="/static/images/favicon-144x144.3e61d1f7.png">
+    <meta name="theme-color" content="#940720">
+
+
+    <link href="/static/css/mosaic-grade-c.44c67bb8.css" rel="stylesheet"/>
+    <link href="/static/css/journal-mosaic.c43d8f2f.css" rel="stylesheet"  media="only screen and (-webkit-min-device-pixel-ratio:0), (min-color-index:0), (-ms-high-contrast: none)" />
+
+
+  <style>
+        .background-brand-primary {
+            background-color: #617693;
+            color: #fff;
+        }
+
+        .background-brand-secondary {
+            background-color: #3b5477;
+            color: #fff;
+        }
+
+        .background-brand-tertiary {
+            background-color: #dbdcdf;
+            color: #222;
+        }
+
+        .background-gradient-brand-primary {
+            background-color: -webkit-gradient(left top, right top, color-stop(50%, #617693), color-stop(50%, transparent)); /* for Android 4.3- */
+            background: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http:%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20preserveAspectRatio=%22none%22%20version=%221.0%22%20width=%22100%25%22%20height=%22100%25%22%20xmlns:xlink=%22http:%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%3Cdefs%3E%3ClinearGradient%20id=%22myLinearGradient%22%20x1=%220%25%22%20y1=%220%25%22%20x2=%22100%25%22%20y2=%220%25%22%20spreadMethod=%22pad%22%3E%3Cstop%20offset=%220%25%22%20stop-color=%22%23617693%22%20stop-opacity=%221%22%2F%3E%3Cstop%20offset=%2250%25%22%20stop-color=%22%23617693%22%20stop-opacity=%221%22%2F%3E%3Cstop%20offset=%2250%25%22%20stop-color=%22%23617693%22%20stop-opacity=%220%22%2F%3E%3Cstop%20offset=%22100%25%22%20stop-color=%22%23617693%22%20stop-opacity=%220%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width=%22100%25%22%20height=%22100%25%22%20style=%22fill:url(%23myLinearGradient);%22%20%2F%3E%3C%2Fsvg%3E") repeat-y;
+        }
+
+        .background-gradient-brand-secondary-tertiary {
+            background-color: -webkit-gradient(left top, right top, color-stop(50%, #3b5477), color-stop(50%, #dbdcdf)); /* for Android 4.3- */
+            background: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http:%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20preserveAspectRatio=%22none%22%20version=%221.0%22%20width=%22100%25%22%20height=%22100%25%22%20xmlns:xlink=%22http:%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%3Cdefs%3E%3ClinearGradient%20id=%22myLinearGradient%22%20x1=%220%25%22%20y1=%220%25%22%20x2=%22100%25%22%20y2=%220%25%22%20spreadMethod=%22pad%22%3E%3Cstop%20offset=%220%25%22%20stop-color=%22%233b5477%22%20stop-opacity=%221%22%2F%3E%3Cstop%20offset=%2250%25%22%20stop-color=%22%233b5477%22%20stop-opacity=%221%22%2F%3E%3Cstop%20offset=%2250%25%22%20stop-color=%22%23dbdcdf%22%20stop-opacity=%221%22%2F%3E%3Cstop%20offset=%22100%25%22%20stop-color=%22%23dbdcdf%22%20stop-opacity=%221%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width=%22100%25%22%20height=%22100%25%22%20style=%22fill:url(%23myLinearGradient);%22%20%2F%3E%3C%2Fsvg%3E") repeat-y;
+        }
+
+        .background-gradient-brand-gray {
+            background-color: -webkit-gradient(left top, right top, color-stop(50%, #dadada), color-stop(50%, transparent)); /* for Android 4.3- */
+            background: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http:%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20preserveAspectRatio=%22none%22%20version=%221.0%22%20width=%22100%25%22%20height=%22100%25%22%20xmlns:xlink=%22http:%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%3Cdefs%3E%3ClinearGradient%20id=%22myLinearGradient%22%20x1=%220%25%22%20y1=%220%25%22%20x2=%22100%25%22%20y2=%220%25%22%20spreadMethod=%22pad%22%3E%3Cstop%20offset=%220%25%22%20stop-color=%22%23dadada%22%20stop-opacity=%221%22%2F%3E%3Cstop%20offset=%2250%25%22%20stop-color=%22%23dadada%22%20stop-opacity=%221%22%2F%3E%3Cstop%20offset=%2250%25%22%20stop-color=%22%23dadada%22%20stop-opacity=%220%22%2F%3E%3Cstop%20offset=%22100%25%22%20stop-color=%22%23dadada%22%20stop-opacity=%220%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width=%22100%25%22%20height=%22100%25%22%20style=%22fill:url(%23myLinearGradient);%22%20%2F%3E%3C%2Fsvg%3E") repeat-y;
+        }
+
+        .background-gradient-brand-gray-light {
+            background: -webkit-gradient(left top, right top, color-stop(50%, #eee), color-stop(50%, transparent)); /* for Android 4.3- */
+            background: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns=%22http:%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20preserveAspectRatio=%22none%22%20version=%221.0%22%20width=%22100%25%22%20height=%22100%25%22%20xmlns:xlink=%22http:%2F%2Fwww.w3.org%2F1999%2Fxlink%22%3E%3Cdefs%3E%3ClinearGradient%20id=%22myLinearGradient%22%20x1=%220%25%22%20y1=%220%25%22%20x2=%22100%25%22%20y2=%220%25%22%20spreadMethod=%22pad%22%3E%3Cstop%20offset=%220%25%22%20stop-color=%22%23eee%22%20stop-opacity=%221%22%2F%3E%3Cstop%20offset=%2250%25%22%20stop-color=%22%23eee%22%20stop-opacity=%221%22%2F%3E%3Cstop%20offset=%2250%25%22%20stop-color=%22%23eee%22%20stop-opacity=%220%22%2F%3E%3Cstop%20offset=%22100%25%22%20stop-color=%22%23eee%22%20stop-opacity=%220%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Crect%20width=%22100%25%22%20height=%22100%25%22%20style=%22fill:url(%23myLinearGradient);%22%20%2F%3E%3C%2Fsvg%3E") repeat-y;
+        }
+
+
+        
+            .background-brand-primary a {
+                color: #fff;
+            }
+        
+
+        
+            .background-brand-secondary a {
+                color: #fff;
+            }
+        
+
+        
+
+
+        .nav-border {
+            border-bottom: 4px solid #3b5477;
+        }
+
+        /* less than or equal to 875px */
+        @media only screen and (max-width: 54.688em) {
+            .banner {
+                background-color: #617693;
+            }
+
+            .nav-border .menu-cell li {
+                border-bottom: 1px solid #3b5477;
+            }
+        }
+
+        .ie7 .small-header-main,
+        .ie8 .small-header-main {
+            background-color: #617693;
+        }
+
+        .sticky-header .inner-banner,
+        .header-primary-color {
+            background-color: #617693;
+        }
+
+        
+            .menu-button,
+            .menu-button-clone {
+                border: 1px solid #fff;
+                border: 1px solid rgba(255, 255, 255, 0.75);
+                color: #fff;
+            }
+
+            .ie7 .tools-menu-button-icon,
+            .ie8 .tools-menu-button-icon,
+            .icon-rotate.tools-menu-button-icon:after,
+            .menu-button-icon:after {
+                background-image: url("/static/images/icon-arrow-down-12x7-white.e10aedb5.svg"), none;
+            }
+
+            .nature-research-logo {
+                background-image: url("/static/images/nature-research-logo-white.a9028dbd.svg"), none;
+            }
+        
+
+    </style>
+
+
+<script>
+    dataLayer = [{"content":{"category":{"contentType":"brief communication","legacy":{"webtrendsPrimaryArticleType":"research","webtrendsSubjectTerms":"gene-expression;immunology;rna-sequencing","webtrendsContentCategory":null,"webtrendsContentCollection":null,"webtrendsContentGroup":"Nature Methods","webtrendsContentGroupType":null,"webtrendsContentSubGroup":"Brief Communication"}},"article":{"doi":"10.1038/nmeth.4179"},"attributes":{"cms":null,"deliveryPlatform":"oscar","copyright":{"legacy":{"webtrendsLicenceType":null}}},"contentInfo":{"authors":["Todd M Gierahn","Marc H Wadsworth II","Travis K Hughes","Bryan D Bryson","Andrew Butler","Rahul Satija","Sarah Fortune","J Christopher Love","Alex K Shalek"],"publishedAt":1486944000,"publishedAtString":"2017-02-13","title":"Seq-Well: portable, low-cost RNA sequencing of single cells at high throughput","legacy":null,"publishedAtTime":null},"journal":{"title":"nature methods","volume":"14","issue":"4"},"authorization":{"status":false}},"page":{"category":{"pageType":"article"},"attributes":{"template":"mosaic","featureFlags":[]}},"privacy":{},"version":"1.0.0","product":null,"session":null,"user":null}];
+</script>
+<script>
+    (function(d,c){if(c){var s = d.createElement('script');s.async = true;s.src = '//nexus.ensighten.com/npg/Bootstrap.js';d.getElementsByTagName('head')[0].appendChild(s);}})(document, !window.location.search.match(/(\?|&)hide_ensighten=true/));
+</script>
+
+
+    <meta name="description" content="Brief Communication"/>
+
+<meta name="robots" content="noarchive">
+<meta name="access" content="No">
+<meta name="WT.cg_s" content="Article"/>
+<meta name="WT.z_bandiera_abtest" content="a"/>
+<meta name="WT.page_categorisation" content="Article_HTML"/>
+
+    <meta name="WT.template" content="oscar"/>
+    <meta name="WT.z_cg_type" content="Nature Research Journals"/>
+    <meta name="WT.cg_n" content="Nature Methods"/>
+    <meta name="dc.rights" content="©2018 Macmillan Publishers Limited. All Rights Reserved."/>
+    <meta name="prism.issn" content="1548-7105"/>
+
+
+<link rel="search" href="http://www.nature.com/search">
+<link rel="search" href="http://www.nature.com/opensearch/opensearch.xml" type="application/opensearchdescription+xml" title="nature.com">
+<link rel="search" href="http://www.nature.com/opensearch/request" type="application/sru+xml" title="nature.com">
+
+
+    
+    
+
+    <meta name="journal_id" content="nmeth"/>
+
+    <meta name="dc.title" content="Seq-Well: portable, low-cost RNA sequencing of single cells at high throughput"/>
+
+    <meta name="dc.source" content="Nature Methods 2017 14:4"/>
+
+    <meta name="dc.format" content="text/html"/>
+
+    <meta name="dc.publisher" content="Nature Publishing Group"/>
+
+    <meta name="dc.date" content="2017-02-13"/>
+
+    <meta name="dc.type" content="Research"/>
+
+    <meta name="dc.language" content="En"/>
+
+    <meta name="dc.copyright" content="2017 Nature Publishing Group"/>
+
+    <meta name="dc.rightsAgent" content="permissions@nature.com"/>
+
+    <meta name="dc.description" content="Seq-Well provides similar scale and data quality to massively parallel, droplet-based single-cell RNA-seq methods in an easy to use, inexpensive and portable microwell format compatible with low-input samples."/>
+
+    <meta name="prism.issn" content="1548-7105"/>
+
+    <meta name="prism.publicationName" content="Nature Methods"/>
+
+    <meta name="prism.publicationDate" content="2017-02-13"/>
+
+    <meta name="prism.volume" content="14"/>
+
+    <meta name="prism.number" content="4"/>
+
+    <meta name="prism.section" content="Research"/>
+
+    <meta name="prism.startingPage" content="395"/>
+
+    <meta name="prism.copyright" content="2017 Nature Publishing Group"/>
+
+    <meta name="prism.rightsAgent" content="permissions@nature.com"/>
+
+    <meta name="prism.url" content="https://www.nature.com/articles/nmeth.4179"/>
+
+    <meta name="prism.doi" content="doi:10.1038/nmeth.4179"/>
+
+    <meta name="citation_pdf_url" content="https://www.nature.com/articles/nmeth.4179.pdf"/>
+
+    <meta name="citation_fulltext_html_url" content="https://www.nature.com/articles/nmeth.4179"/>
+
+    <meta name="citation_journal_title" content="Nature Methods"/>
+
+    <meta name="citation_publisher" content="Nature Publishing Group"/>
+
+    <meta name="citation_issn" content="1548-7105"/>
+
+    <meta name="citation_title" content="Seq-Well: portable, low-cost RNA sequencing of single cells at high throughput"/>
+
+    <meta name="citation_volume" content="14"/>
+
+    <meta name="citation_issue" content="4"/>
+
+    <meta name="citation_online_date" content="2017/02/13"/>
+
+    <meta name="citation_firstpage" content="395"/>
+
+    <meta name="citation_article_type" content="Brief Communication"/>
+
+    <meta name="dc.identifier" content="doi:10.1038/nmeth.4179"/>
+
+    <meta name="DOI" content="10.1038/nmeth.4179"/>
+
+    <meta name="citation_doi" content="10.1038/nmeth.4179"/>
+
+    <meta name="dc.creator" content="Todd M Gierahn"/>
+
+    <meta name="dc.creator" content="Marc H Wadsworth II"/>
+
+    <meta name="dc.creator" content="Travis K Hughes"/>
+
+    <meta name="dc.creator" content="Bryan D Bryson"/>
+
+    <meta name="dc.creator" content="Andrew Butler"/>
+
+    <meta name="dc.creator" content="Rahul Satija"/>
+
+    <meta name="dc.creator" content="Sarah Fortune"/>
+
+    <meta name="dc.creator" content="J Christopher Love"/>
+
+    <meta name="dc.creator" content="Alex K Shalek"/>
+
+    <meta name="dc.subject" content="Gene expression"/>
+
+    <meta name="dc.subject" content="Immunology"/>
+
+    <meta name="dc.subject" content="RNA sequencing"/>
+
+    <meta name="citation_author" content="Todd M Gierahn"/>
+
+    <meta name="citation_author" content="Marc H Wadsworth II"/>
+
+    <meta name="citation_author" content="Travis K Hughes"/>
+
+    <meta name="citation_author" content="Bryan D Bryson"/>
+
+    <meta name="citation_author" content="Andrew Butler"/>
+
+    <meta name="citation_author" content="Rahul Satija"/>
+
+    <meta name="citation_author" content="Sarah Fortune"/>
+
+    <meta name="citation_author" content="J Christopher Love"/>
+
+    <meta name="citation_author" content="Alex K Shalek"/>
+
+    <meta name="access_endpoint" content="https://www.nature.com/platform/readcube-access"/>
+
+    <meta name="twitter:card" content="summary"/>
+
+    <meta name="twitter:title" content="Seq-Well: portable, low-cost RNA sequencing of single cells at high th"/>
+
+    <meta name="twitter:site" content="@naturemethods"/>
+
+    <meta name="twitter:description" content="Seq-Well provides similar scale and data quality to massively parallel, droplet-based single-cell RNA-seq methods in an easy to use, inexpensive and portable microwell format compatible with low-input samples."/>
+
+    <meta name="twitter:image" content="https://media.springernature.com/full/nature-static/assets/v1/image-assets/nmeth.4179-F1.jpg"/>
+
+    <meta name="WT.z_primary_atype" content="Research"/>
+
+    <meta name="WT.z_subject_term" content="Gene expression;Immunology;RNA sequencing"/>
+
+    <meta name="WT.z_subject_term_id" content="gene-expression;immunology;rna-sequencing"/>
+
+
+    
+        <meta property="og:url" content="https://www.nature.com/articles/nmeth.4179"/>
+        <meta property="og:type" content="article"/>
+        <meta property="og:site_name" content="Nature Methods"/>
+        <meta property="og:title" content="Seq-Well: portable, low-cost RNA sequencing of single cells at high throughput"/>
+        <meta property="og:description" content="&lt;p&gt;Seq-Well provides similar scale and data quality to massively parallel, droplet-based single-cell RNA-seq methods in an easy to use, inexpensive and portable microwell format compatible with low-input samples.&lt;/p&gt;"/>
+        <meta property="og:image" content="//media.springernature.com/m685/nature-static/assets/v1/image-assets/nmeth.4179-F1.jpg"/>
+    
+</head>
+<!--[if IE 9]><body class="ie9 article-page"><![endif]-->
+<!--[if gt IE 9]><!--><body class="article-page"><!--<![endif]-->
+<div role="banner" class="position-relative cleared z-index-50" data-test="top-containers">
+    <div class="hide-print container background-gray-dark">
+    <div class="content mq1200-padded">
+        <a href="#content" id="skiplink" class="skiplink contrast-text js-no-scroll" data-track="click"
+           data-track-source="skip-link" data-track-dest="anchor:Skip to main content">Skip to main content</a>
+    </div>
+</div>
+
+
+<div class="container cleared container-type-cookies-usage" data-container-type="cookies-usage">
+    <div class="cookie-banner hide-print position-relative z-index-100">
+        <div class="content cleared mq1200-padded">
+            <form class="suppress-bottom-margin text-center mb10 mt10" action="/platform/accept-cookies" method="post">
+                <p class="contrast-text text13 hide-overflow"><span class="icon">We use cookies to improve your experience with our site.</span>
+                    <button type="submit" name="cookies" value="accepted" class="accept-btn contrast-text text13 ml10">
+                        Accept and close
+                    </button>
+                    <span class="pl6 pr6"> | </span><a href="/info/cookies.html" class="contrast-text text13">More
+                        info.</a></p>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+    
+        <style>
+            body {
+                padding-top: 30px;
+            }
+
+            .sticky-header {
+                top: 30px;
+            }
+
+            .container-type-beta-switch-off {
+                position: fixed;
+                top: 0;
+                height: 30px;
+                width: 100%;
+                z-index: 200;
+            }
+
+            .beta-switch {
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+        </style>
+
+        <div class="container grade-c-hide cleared container-type-beta-switch-off" data-container-type="feedback-and-beta-switch-off">
+            <div class="pa6 position-relative z-index-100 text-center text13 tighten-line-height beta-switch">
+
+                <span><b>You are viewing the new design. </b> <a href="https://docs.google.com/forms/d/e/1FAIpQLSfA5g_hjSjcAzbOq5e2k-Bw-rxON-zy0yXg9o7wHyCjkF9hbQ/viewform" data-track="click" data-track-source="feedback-banner" data-track-dest="link:Leave feedback">Leave feedback</a></span>
+            </div>
+        </div>
+    
+
+<div class="container cleared container-type-banner-advert inline-group" data-container-type="banner-advert">
+    <div class="hide-print pt10 pb10 mq875-pa0 position-relative z-index-100 clear-float cleared leaderboard-or-billboard-container">
+        <div class="leaderboard-or-billboard-inner ad-with-label">
+            
+                
+    <div id="div-gpt-ad-top-1"
+         class="div-gpt-ad advert leaderboard js-ad text-center hide-print grade-c-hide hide-overflow"
+         data-gpt-unitpath="/285/nmeth.nature.com/article"
+         data-gpt-sizes="728x90"
+         data-gpt-targeting="template=mosaic;pos=top;abr=!webtv;tile=1;artid=nmeth.4179;techmeta=13,14,31,38,45,47,62,63,91;subjmeta=1647,1949,199,208,250,514,631">
+        <noscript>
+            <a href="//pubads.g.doubleclick.net/gampad/jump?iu=/285/nmeth.nature.com/article&amp;sz=728x90&amp;tile=1&amp;c=76365616&amp;t=template%3Dmosaic%26pos%3Dtop%26abr%3D%21webtv%26tile%3D1%26artid%3Dnmeth.4179%26techmeta%3D13,14,31,38,45,47,62,63,91%26subjmeta=%3D1647,1949,199,208,250,514,631">
+                <img data-test="gpt-advert-fallback-img"
+                     src="//pubads.g.doubleclick.net/gampad/ad?iu=/285/nmeth.nature.com/article&amp;sz=728x90&amp;tile=1&amp;c=76365616&amp;t=template%3Dmosaic%26pos%3Dtop%26abr%3D%21webtv%26tile%3D1%26artid%3Dnmeth.4179%26techmeta%3D13,14,31,38,45,47,62,63,91%26subjmeta=%3D1647,1949,199,208,250,514,631"
+                     alt="Advertisement"
+                     width="728"
+                     height="90"></a>
+        </noscript>
+    </div>
+
+            
+        </div>
+    </div>
+</div>
+
+<div class="text-orange content grade-c-show"><p>Thank you for visiting nature.com. You are using a browser version with
+    limited support for CSS. To obtain the best experience, we recommend you use a more up to date browser (or turn off
+    compatibility mode in Internet Explorer). In the meantime, to ensure continued support, we are displaying the site
+    without styles and JavaScript.</p></div>
+
+    <div class="hide-print container background-bluegray contrast-text text14 strong lower mq640-hide position-relative z-index-100"
+     data-test="header-breadcrumbs">
+     <div class="content cleared mq1200-padded">
+         <div class="breadcrumbs pin-left">
+             <ol class="ma0 cleared clean-list inline-list"><li id="breadcrumb0" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"
+                             itemref="breadcrumb1"><a href="/" itemprop="url" class="icon icon-right icon-arrow-right-6x10-white pr15"
+                                data-track="click" data-track-source="breadcrumb" data-track-dest="link:nature.com"><span itemprop="title">nature.com</span></a></li><li id="breadcrumb1" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"
+                             itemref="breadcrumb2" class="ml6"><a href="/nmeth" itemprop="url" class="icon icon-right icon-arrow-right-6x10-white pr15"
+                                data-track="click" data-track-source="breadcrumb" data-track-dest="link:nature methods"><span itemprop="title">nature methods</span></a></li><li id="breadcrumb2" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"
+                             itemref="breadcrumb3" class="ml6"><a href="/nmeth/articles?type&#x3D;brief-communication" itemprop="url" class="icon icon-right icon-arrow-right-6x10-white pr15"
+                                data-track="click" data-track-source="breadcrumb" data-track-dest="link:brief communications"><span itemprop="title">brief communications</span></a></li><li id="breadcrumb3" itemscope="itemscope" itemtype="http://data-vocabulary.org/Breadcrumb"><a href="/articles/nmeth.4179" itemprop="url" data-track="click" data-track-source="breadcrumb"
+                                data-track-dest="link:article" class="ml6"><span itemprop="title">article</span></a></li></ol>
+        </div>
+         
+        <p class="pin-right box-sizing header-primary-color nature-research-logo ma0 pa6 hide-text grade-c-hide">A Nature Research Journal</p>
+        
+     </div>
+</div>
+
+    
+    <div class="container js-header-container mb20 position-relative z-index-50" data-ui="header-container"
+         data-container-type="header">
+        <div class="cleared clear hide-print position-relative background-gradient-brand-primary js-header default-header z-index-100 composite-layer tighten-line-height">
+            <div class="banner js-banner content mq1200-padded position-relative">
+                <div class="inner-banner cleared">
+                    <div class="main-column small-header-main pin-left">
+                        <div class="header-logo-container header-primary-color">
+                            <a href="#menu" id="menu-button" class="js-header-menu-button menu-button js-no-scroll"
+                               data-test="menu-button">
+										<span class="menu-button-icon icon-rotate">
+											<span class="menu-button-label">Menu</span>
+										</span>
+                            </a>
+                            <h1 class="visually-hidden" data-test="product-title">Nature Methods</h1>
+                            
+                                <a href="/nmeth" class="header-logo inline-block equalize-line-height"
+                                   data-track="click"
+                                   data-track-source="logo"
+                                   data-track-dest=""><img alt=""
+                                                           src="//media.springernature.com/full/nature-cms/uploads/product/nmeth/header-4f1ce23ce29a116b2916dcff8460ed18.svg"
+                                                           class="grade-c-invisible header-logo-primary js-svg"
+                                                           data-png="//media.springernature.com/full/nature-cms/uploads/product/nmeth/header-3d52398c03b7661e5b880eebbd637d40.png"><img
+                                        alt="" src="//media.springernature.com/full/nature-cms/uploads/product/nmeth/header-f52cfe151ee792591608ad3bb68dffea.svg"
+                                        class="grade-c-invisible header-logo-secondary js-svg"
+                                        data-png="//media.springernature.com/full/nature-cms/uploads/product/nmeth/header-4772d747277dac66fd8641d6240d8e77.png"></a>
+                        </div>
+                    </div>
+                    <div class="position-absolute position-right small-header-side">
+                        <div class="pin-right">
+                            <a href="#search-menu" data-component="tray-button"
+                               class="pin-left inline-group-top pa10 pr15 pl15 small-header-icons background-bluegray-translucent text11 contrast-text mr1"
+                               data-test="search-link" data-track="click" data-track-source="search-menu"
+                               data-track-dest="open" data-track-dl="51">
+										<span class="icon icon-above icon-search-25x25-white icon-search-25x25-gray block text-center">
+											<span class="block mt6 mq875-hide small-header-hide">Search</span>
+										</span>
+                            </a>
+                            
+                                <a href="http://www.nature.com/nams/svc/myaccount/save/alert?list_id&#x3D;95"
+                                   class="mq640-hide pin-left inline-group-top pa10 small-header-icons background-bluegray-translucent text11 contrast-text mr1"
+                                   data-test="ealert-link" data-track="click" data-track-source="ealert-menu"
+                                   data-track-dest="link:E-alert">
+										<span class="icon icon-above icon-ealert-25x25-white icon-ealert-25x25-gray block text-center">
+											<span class="block mt6 mq875-hide small-header-hide">E-alert</span>
+										</span>
+                                </a>
+                            
+                            
+                                <a href="http://mts-nmeth.nature.com/cgi-bin/main.plex"
+                                   class="mq640-hide inline-block pin-left inline-group-top pa10 pr15 pl15 small-header-icons background-bluegray-translucent text11 contrast-text mr1"
+                                   data-test="submit-link" data-track="click" data-track-source="submit-menu"
+                                   data-track-dest="link:Submit">
+										<span class="icon icon-above icon-submit-25x25-white icon-submit-25x25-gray block text-center">
+											<span class="block mt6 mq875-hide small-header-hide">Submit</span>
+										</span>
+                                </a>
+                            
+                              <a href="/nams/svc/myaccount"
+       id="my-account"
+       class="placeholder inline-block pin-left inline-group-top pa10 pr15 pl15 small-header-icons background-bluegray-translucent text11 contrast-text"
+       data-test="login-link" data-track="click" data-track-source="user-menu"
+       data-track-dest="link:My Account">
+            <span class="icon icon-above icon-login-25x25-white icon-login-25x25-gray block text-center">
+                <span class="block mt6 mq875-hide small-header-hide">My Account</span>
+            </span>
+    </a>
+    <a href="https://idp.nature.com/authorize/natureuser?client_id&#x3D;grover&amp;redirect_uri&#x3D;https%3A%2F%2Fwww.nature.com%2Farticles%2Fnmeth.4179"
+       id="login-button"
+       style="display: none;"
+       class="placeholder inline-block pin-left inline-group-top pa10 pr15 pl15 small-header-icons background-bluegray-translucent text11 contrast-text"
+       data-test="login-link" data-track="click"
+       data-track-source="user-menu"
+       data-track-dest="link:Login">
+            <span class="icon icon-above icon-login-25x25-white icon-login-25x25-gray block text-center">
+                <span class="block mt6 mq875-hide small-header-hide">Login</span>
+            </span>
+    </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    
+
+</div>
+
+<div role="main" id="content" class="position-relative z-index-1">
+    <div class="container cleared container-type-article" data-container-type="article">
+        <div class="content position-relative cleared clear mq1200-padded" data-component="article-container">
+            <article itemscope="itemscope" itemtype="http://schema.org/ScholarlyArticle">
+                <div class="full-width-print main-column pin-left js-main-column highlighter" role="main">
+                    <header>
+                        <div class="grid grid-12 last pb20">
+                            
+    <ul class="grade-c-hide hide-print mq875-metrics-summary mq480-metrics-summary background-steelblue-light clean-list tighten-line-height standard-space-below cleared clear text14">
+        
+            
+                <li class="pa10 pin-left"><!--[if lte IE 8]><img
+                        src="https://badges.altmetric.com/?size&#x3D;100&amp;score&#x3D;91&amp;types&#x3D;mbttttwf&amp;style&#x3D;bar"
+                        class=altmetric-summary-bar alt=""><![endif]--><!--[if gt IE 8]><!--><img
+                        src="https://badges.altmetric.com/?size&#x3D;100&amp;score&#x3D;91&amp;types&#x3D;mbttttwf&amp;style&#x3D;bar"
+                        class="altmetric-summary-bar" alt=""><!--<![endif]--></li>
+            
+            
+                <li data-test="altmetric-score" class="pa10 pin-left">Altmetric: 91</li>
+            
+        
+
+        
+            <li data-test="citation-count" class="pa10 pin-left">Citations: 20</li>
+        
+
+        
+            
+                <li class="pa10 pin-right">
+                    <a data-test="metrics-link" href="/articles/nmeth.4179/metrics"
+                       class="strong icon icon-right icon-double-chevron-right-10x10-blue pr15 inline-block"
+                       data-track="click" data-track-source="metrics" data-track-dest="link:metrics">More detail</a>
+                </li>
+        
+    </ul>
+
+                            <p class="text13 text-gray-light tiny-space-below" data-test="article-identifier">
+                                Brief Communication
+                                
+                            </p>
+                            
+                            <h1 class="tighten-line-height small-space-below" data-article-title="" itemprop="name headline">Seq-Well: portable, low-cost RNA sequencing of single cells at high throughput</h1>
+                            <ul class="grid grid-12 last clean-list inline-list js-list-authors text14" data-etal=25 data-etal-small=3><li itemprop=author itemscope itemtype=http://schema.org/Person><span class=js-separator></span><a href=#auth-1><span itemprop=name>Todd M Gierahn</span></a><sup class=js-hide><a href=#a1>1</a><span itemprop=affiliation itemscope itemtype=http://schema.org/Organization class=hide><meta itemprop=name content="Koch Institute for Integrative Cancer Research, MIT"><meta itemprop=address content="Koch Institute for Integrative Cancer Research, MIT, Cambridge, Massachusetts, USA."></span></sup><sup class=js-hide> <a href=#n1>n1</a></sup><li itemprop=author itemscope itemtype=http://schema.org/Person><span class=js-separator>, </span><a href=#auth-2><span itemprop=name>Marc H Wadsworth II</span></a><sup class=js-hide><a href=#a2>2</a>, <a href=#a3>3</a>, <a href=#a4>4</a><span itemprop=affiliation itemscope itemtype=http://schema.org/Organization class=hide><meta itemprop=name content="Institute for Medical Engineering &amp; Science (IMES) and Department of Chemistry, MIT"><meta itemprop=address content="Institute for Medical Engineering &amp;amp; Science (IMES) and Department of Chemistry, MIT, Cambridge, Massachusetts, USA."></span><span itemprop=affiliation itemscope itemtype=http://schema.org/Organization class=hide><meta itemprop=name content="Broad Institute of MIT and Harvard"><meta itemprop=address content="Broad Institute of MIT and Harvard, Cambridge, Massachusetts, USA."></span><span itemprop=affiliation itemscope itemtype=http://schema.org/Organization class=hide><meta itemprop=name content="Ragon Institute of MGH, MIT and Harvard"><meta itemprop=address content="Ragon Institute of MGH, MIT and Harvard, Cambridge, Massachusetts, USA."></span></sup><sup class=js-hide> <a href=#n1>n1</a></sup><li itemprop=author itemscope itemtype=http://schema.org/Person><span class=js-separator>, </span><a href=#auth-3><span itemprop=name>Travis K Hughes</span></a><sup class=js-hide><a href=#a2>2</a>, <a href=#a3>3</a>, <a href=#a4>4</a><span itemprop=affiliation itemscope itemtype=http://schema.org/Organization class=hide><meta itemprop=name content="Institute for Medical Engineering &amp; Science (IMES) and Department of Chemistry, MIT"><meta itemprop=address content="Institute for Medical Engineering &amp;amp; Science (IMES) and Department of Chemistry, MIT, Cambridge, Massachusetts, USA."></span><span itemprop=affiliation itemscope itemtype=http://schema.org/Organization class=hide><meta itemprop=name content="Broad Institute of MIT and Harvard"><meta itemprop=address content="Broad Institute of MIT and Harvard, Cambridge, Massachusetts, USA."></span><span itemprop=affiliation itemscope itemtype=http://schema.org/Organization class=hide><meta itemprop=name content="Ragon Institute of MGH, MIT and Harvard"><meta itemprop=address content="Ragon Institute of MGH, MIT and Harvard, Cambridge, Massachusetts, USA."></span></sup><sup class=js-hide> <a href=#n1>n1</a></sup><li itemprop=author itemscope itemtype=http://schema.org/Person><span class=js-separator>, </span><a href=#auth-4><span itemprop=name>Bryan D Bryson</span></a><sup class=js-hide><a href=#a4>4</a>, <a href=#a5>5</a><span itemprop=affiliation itemscope itemtype=http://schema.org/Organization class=hide><meta itemprop=name content="Ragon Institute of MGH, MIT and Harvard"><meta itemprop=address content="Ragon Institute of MGH, MIT and Harvard, Cambridge, Massachusetts, USA."></span><span itemprop=affiliation itemscope itemtype=http://schema.org/Organization class=hide><meta itemprop=name content="Department of Immunology and Infectious Diseases, Harvard School of Public Health"><meta itemprop=address content="Department of Immunology and Infectious Diseases, Harvard School of Public Health, Boston, Massachusetts, USA."></span></sup><li itemprop=author itemscope itemtype=http://schema.org/Person><span class=js-separator>, </span><a href=#auth-5><span itemprop=name>Andrew Butler</span></a><sup class=js-hide><a href=#a6>6</a>, <a href=#a7>7</a><span itemprop=affiliation itemscope itemtype=http://schema.org/Organization class=hide><meta itemprop=name content="Center for Genomics and Systems Biology, Department of Biology, New York University"><meta itemprop=address content="Center for Genomics and Systems Biology, Department of Biology, New York University, New York, New York, USA."></span><span itemprop=affiliation itemscope itemtype=http://schema.org/Organization class=hide><meta itemprop=name content="New York Genome Center"><meta itemprop=address content="New York Genome Center, New York, New York, USA."></span></sup><li itemprop=author itemscope itemtype=http://schema.org/Person><span class=js-separator>, </span><a href=#auth-6><span itemprop=name>Rahul Satija</span></a><sup class=js-hide><a href=#a6>6</a>, <a href=#a7>7</a><span itemprop=affiliation itemscope itemtype=http://schema.org/Organization class=hide><meta itemprop=name content="Center for Genomics and Systems Biology, Department of Biology, New York University"><meta itemprop=address content="Center for Genomics and Systems Biology, Department of Biology, New York University, New York, New York, USA."></span><span itemprop=affiliation itemscope itemtype=http://schema.org/Organization class=hide><meta itemprop=name content="New York Genome Center"><meta itemprop=address content="New York Genome Center, New York, New York, USA."></span></sup><li itemprop=author itemscope itemtype=http://schema.org/Person><span class=js-separator>, </span><a href=#auth-7><span itemprop=name>Sarah Fortune</span></a><sup class=js-hide><a href=#a4>4</a>, <a href=#a5>5</a><span itemprop=affiliation itemscope itemtype=http://schema.org/Organization class=hide><meta itemprop=name content="Ragon Institute of MGH, MIT and Harvard"><meta itemprop=address content="Ragon Institute of MGH, MIT and Harvard, Cambridge, Massachusetts, USA."></span><span itemprop=affiliation itemscope itemtype=http://schema.org/Organization class=hide><meta itemprop=name content="Department of Immunology and Infectious Diseases, Harvard School of Public Health"><meta itemprop=address content="Department of Immunology and Infectious Diseases, Harvard School of Public Health, Boston, Massachusetts, USA."></span></sup><li itemprop=author itemscope itemtype=http://schema.org/Person><span class=js-separator>, </span><a href=#auth-8 class="icon icon-right-top icon-mail-12x9-blue pr15" data-corresp-id=c2><span itemprop=name>J Christopher Love</span></a><sup class=js-hide><a href=#a1>1</a>, <a href=#a3>3</a>, <a href=#a4>4</a><span itemprop=affiliation itemscope itemtype=http://schema.org/Organization class=hide><meta itemprop=name content="Koch Institute for Integrative Cancer Research, MIT"><meta itemprop=address content="Koch Institute for Integrative Cancer Research, MIT, Cambridge, Massachusetts, USA."></span><span itemprop=affiliation itemscope itemtype=http://schema.org/Organization class=hide><meta itemprop=name content="Broad Institute of MIT and Harvard"><meta itemprop=address content="Broad Institute of MIT and Harvard, Cambridge, Massachusetts, USA."></span><span itemprop=affiliation itemscope itemtype=http://schema.org/Organization class=hide><meta itemprop=name content="Ragon Institute of MGH, MIT and Harvard"><meta itemprop=address content="Ragon Institute of MGH, MIT and Harvard, Cambridge, Massachusetts, USA."></span></sup><sup class=js-hide> <a href=#n2>n2</a></sup><li itemprop=author itemscope itemtype=http://schema.org/Person><span class=js-separator>&nbsp;&amp; </span><a href=#auth-9 class="icon icon-right-top icon-mail-12x9-blue pr15" data-corresp-id=c1><span itemprop=name>Alex K Shalek</span></a><sup class=js-hide><a href=#a2>2</a>, <a href=#a3>3</a>, <a href=#a4>4</a><span itemprop=affiliation itemscope itemtype=http://schema.org/Organization class=hide><meta itemprop=name content="Institute for Medical Engineering &amp; Science (IMES) and Department of Chemistry, MIT"><meta itemprop=address content="Institute for Medical Engineering &amp;amp; Science (IMES) and Department of Chemistry, MIT, Cambridge, Massachusetts, USA."></span><span itemprop=affiliation itemscope itemtype=http://schema.org/Organization class=hide><meta itemprop=name content="Broad Institute of MIT and Harvard"><meta itemprop=address content="Broad Institute of MIT and Harvard, Cambridge, Massachusetts, USA."></span><span itemprop=affiliation itemscope itemtype=http://schema.org/Organization class=hide><meta itemprop=name content="Ragon Institute of MGH, MIT and Harvard"><meta itemprop=address content="Ragon Institute of MGH, MIT and Harvard, Cambridge, Massachusetts, USA."></span></sup><sup class=js-hide> <a href=#n2>n2</a></sup></ul>
+                            
+                            
+                            <div class="flex-box grid-12 mq480-kill-flex standard-space-below cleared" data-container-section=info><div class="flex-box grid grid-6 mq480-grid-12"><ul class="flex-box-item none border-gray-medium border-left-1 text14 ma0 pa0 pl10" data-component=article-info-list><li><i>Nature Methods</i> <b>14</b>, <span itemprop=pageStart>395</span>&ndash;<span itemprop=pageEnd>398</span> (2017)<li><abbr title="Digital Object Identifier">doi</abbr>:10.1038/nmeth.4179<li><a href=/articles/nmeth.4179.ris data-track=click data-track-source=citation-download data-track-dest="link:Download Citation">Download Citation</a></ul></div><div class="flex-box grid grid-6 last mq480-grid-12"><div class="flex-box-item border-gray-medium border-left-1 text14 pl10 mq480-pt10" data-component=article-history-list><dl><dt class="pin-left clear-left text-gray-light pr6">Received:<dd><time datetime=2016-07-25>25 July 2016</time><dt class="pin-left clear-left text-gray-light pr6">Accepted:<dd><time datetime=2016-12-28>28 December 2016</time><dt class="pin-left clear-left text-gray-light pr6">Published online:<dd><time datetime=2017-02-13 itemprop=datePublished>13 February 2017</time></dl></div></div></div>
+                            
+                            
+                        </div>
+                    </header>
+                    
+    <ul class="mb0 pa0 tiny-space-above inline-list text14 js-hide" data-component="article-subject-links">
+        <li><a href="/subjects/gene-expression" class="subject-tag-link mr2 mb2" data-track="click" data-track-source="subject-name" data-track-dest="link:Gene expression">Gene expression</a></li><li><a href="/subjects/immunology" class="subject-tag-link mr2 mb2" data-track="click" data-track-source="subject-name" data-track-dest="link:Immunology">Immunology</a></li><li><a href="/subjects/rna-sequencing" class="subject-tag-link mr2 mb2" data-track="click" data-track-source="subject-name" data-track-dest="link:RNA sequencing">RNA sequencing</a></li>
+    </ul>
+
+                    
+    <ul class="clean-list mb0 tiny-space-above js-hide" data-component="article-relations">
+        
+            
+                <li><a href="/articles/nmeth0717-752c" class="relation-link">Erratum: 29 June 2017</a></li>
+            
+        
+    </ul>
+
+
+                    <div data-article-body="true" class="article-body clear">
+                        <section aria-labelledby=abstract><div class="serif article-section js-article-section cleared clear" id=abstract-section><h2 class="js-section-title section-title position-relative strong tighten-line-height background-gray-light pt20 pb6 pl0 pr20 standard-space-below mq640-pt20 mq640-pb10 mq640-pl20 mq640-mt0 extend-left" id=abstract>Abstract</h2><div class="pl20 mq875-pl0 js-collapsible-section" id=abstract-content itemprop=description><p>Single-cell RNA-seq can precisely resolve cellular states, but applying this method to low-input samples is challenging. Here, we present Seq-Well, a portable, low-cost platform for massively parallel single-cell RNA-seq. Barcoded mRNA capture beads and single cells are sealed in an array of subnanoliter wells using a semipermeable membrane, enabling efficient cell lysis and transcript capture. We use Seq-Well to profile thousands of primary human macrophages exposed to <i>Mycobacterium tuberculosis</i>.</p></div></div></section>
+
+                        
+                            
+                            <div class="pl20 mq875-pl0 serif">
+                                <div class="cleared background-cornsilk border-linkblue border-all-1 standard-space-below">
+    <div class="hide-overflow pa20 pt30 pb30">
+        
+        
+    <ul class="access-options-list clean-list standard-space-below mq640-mb0 cleared flex-box mq640-kill-flex">
+        
+            <li class="sans-serif access-option flex-box-item position-relative pb40">
+                <div class="text-center pa10 pb20 mq640-pb30 mq640-pt20">
+                    <div class="access-option-body cleared">
+                        <h2 class="text14 strong sans-serif tighten-line-height tiny-space-below" data-test="subscribeText">Subscribe to <i>Nature Methods</i> for full access:</h2>
+                        <p class="text48 sans-ultra-light tighten-line-height small-space-below nowrap" data-test="subscriptionPrice">$59</p>
+                    </div>
+                </div>
+                <p class="position-absolute position-bottom position-left position-right text-center">
+                    <a href="/subscribe/nmeth" class="general-button" data-track-click="mop_access_options"
+                       data-track-source="doi:10.1038/nmeth.4179" data-track-dest="link:subscribe">Subscribe</a>
+                </p>
+            </li>
+        
+        <li class="sans-serif last access-option-readcube flex-box-item position-relative pb40">
+            <div class="text-center pa10 pb20 access-option readcube-purchase" data-doi="10.1038/nmeth.4179" data-type="maestro_mosaic"></div>
+        </li>
+    </ul>
+
+
+        <h2 class="text13 sans-serif strong">Additional access options:</h2>
+
+        <p class="sans-serif text13 mb0" id="access-login" data-test="access-login">
+            Already a subscriber?&nbsp;
+            <a href="https://idp.nature.com/authorize/natureuser?client_id&#x3D;grover&amp;redirect_uri&#x3D;http%3A%2F%2Fwww.nature.com%2Farticles%2Fnmeth.4179" data-test="subscribe-prompt-log-in" data-track-click="mop_access_options" data-track-source="doi:10.1038/nmeth.4179"
+               data-track-dest="link:login">Log in</a>&nbsp; now or&nbsp;
+            <a href="/register" data-test="subscribe-prompt-register" data-track-click="mop_access_options" data-track-source="doi:10.1038/nmeth.4179"
+               data-track-dest="link:register">Register</a>&nbsp; for online access.
+        </p>
+        <nav>
+            <ul class="text13 ma0 clean-list inline-list">
+                <li class="sans-serif identifier"><a
+                        href="https://idp-saml-nature-federated-login.live.cf.public.nature.com/saml/login?idp&#x3D;https%3A%2F%2Fidp.eduserv.org.uk%2Fopenathens&amp;targetUrl&#x3D;http%3A%2F%2Fwww.nature.com%2Farticles%2Fnmeth.4179"
+                        data-track-click="mop_access_options" data-track-source="doi:10.1038/nmeth.4179"
+                        data-track-dest="link:login via athens">Login via Athens</a> |
+                </li>
+                <li class="sans-serif identifier"><a
+                        href="https://idp.nature.com/login/federated?redirect_uri&#x3D;http%3A%2F%2Fwww.nature.com%2Farticles%2Fnmeth.4179"
+                        data-track-click="mop_access_options" data-track-source="doi:10.1038/nmeth.4179"
+                        data-track-dest="link:login via shibboleth">Login via Shibboleth</a> |
+                </li>
+                <li class="sans-serif identifier">
+                    <a href="http://www.bl.uk/reshelp/atyourdesk/docsupply/searchandorderadocument/order/index.html"
+                       data-track-click="mop_access_options" data-track-source="doi:10.1038/nmeth.4179"
+                       data-track-dest="link:use a document delivery service">Use a document delivery service</a> |
+                </li>
+                <li class="sans-serif identifier">
+                    <a href="/libraries/site_licenses/index.html" data-track-click="mop_access_options"
+                       data-track-source="doi:10.1038/nmeth.4179" data-track-dest="link:purchase a site license">Purchase
+                        a site license</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+                            </div>
+                        
+                        <section aria-labelledby=change-history><div class="serif article-section js-article-section cleared clear" id=change-history-section><h2 class="js-section-title section-title position-relative strong tighten-line-height background-gray-light pt20 pb6 pl0 pr20 standard-space-below mq640-pt20 mq640-pb10 mq640-pl20 mq640-mt0 extend-left small-space-above" id=change-history>Change history</h2><div class="pl20 mq875-pl0 js-collapsible-section" id=change-history-content><ul class=clean-list><li class=standard-space-below><ins datetime=2017-06-21><h3 class="sans-serif strong text-gray-light inline mri">Corrected online 21 June 2017</h3><p class=inline>The doi, link, and publication date of the Seq-Well protocol in the <i>Protocol Exchange</i> were updated; the doi and link have been corrected from <a href=https://doi.org/10.1038/protex.2017.006>http://dx.doi.org/10.1038/protex.2017.006</a> to <a href=https://doi.org/10.1038/protex.2017.006a>http://dx.doi.org/10.1038/protex.2017.006a</a>, and the date has been changed from 2016 to 2017. The grant number U24 AI11862 was incorrect; it has been corrected to U24 AI118762. These errors have been updated in the HTML and PDF versions of the article.</p></ins></ul></div></div></section><section aria-labelledby=accessions><div class="serif article-section js-article-section cleared clear" id=accessions-section><h2 class="js-section-title section-title position-relative strong tighten-line-height background-gray-light pt20 pb6 pl0 pr20 standard-space-below mq640-pt20 mq640-pb10 mq640-pl20 mq640-mt0 extend-left small-space-above" id=accessions>Accessions</h2><div class="pl20 mq875-pl0 js-collapsible-section" id=accessions-content><div class="clear cleared standard-space-below"><h3 class="h3 strong mb10 upper">Primary accessions</h3><div class="grid grid-6 mq640-grid-12"><h3 class="h3 text-gray-light strong mb4 border-gray border-bottom-2">Gene Expression Omnibus</h3><ul class="clean-list cleared standard-space-below"><li class="border-gray-light border-bottom-1"><a href="http://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE92495">GSE92495</a></ul></div></div></div></div></section><section aria-labelledby=references><div class="serif article-section js-article-section cleared clear" id=references-section><h2 class="js-section-title section-title position-relative strong tighten-line-height background-gray-light pt20 pb6 pl0 pr20 standard-space-below mq640-pt20 mq640-pb10 mq640-pl20 mq640-mt0 extend-left small-space-above" id=references>References</h2><div class="pl20 mq875-pl0 js-collapsible-section" id=references-content><div data-container-section=references><ol class="clean-list ma0 standard-space-below indented-list" data-component=reading-companion-references><li class="small-space-below border-gray-medium border-bottom-1 position-relative js-ref-item" itemprop=citation itemscope itemtype=http://schema.org/Article><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">1.</span><p id=ref1 class=tiny-space-below><span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Shalek, A.K.</span></span> <i>et al.</i> <i>Nature</i> <b>498</b>, 236–240 (2013).</p><ul class="js-ref-links clean-list cleared strong sans-serif text13 hide-print"><li class=pin-right><ul class="clean-list ma0"><li class="pin-left pl20"><a href="http://chemport.cas.org/cgi-bin/sdcgi?APP=ftslink&amp;action=reflink&amp;origin=npg&amp;version=1.0&amp;coi=1:CAS:528:DC%2BC3sXotFSmtr4%3D&amp;md5=704c6ba70275cf3097ec294f3a888eac" data-track=click data-track-source=link data-track-dest="link:Reference1 CAS"><span class=visually-hidden>View ref 1 on </span>CAS</a><li class="pin-left pl20"><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?holding=npg&amp;cmd=Retrieve&amp;db=PubMed&amp;list_uids=23685454&amp;dopt=Abstract" data-track=click data-track-source=link data-track-dest="link:Reference1 PubMed"><span class=visually-hidden>View ref 1 on </span>PubMed</a><li class="pin-left pl20"><a href=http://dx.doi.org/10.1038/nature12172 data-track=click data-track-source=link data-track-dest="link:Reference1 Article" itemprop=url>Article<span class=visually-hidden> ref 1</span></a></ul></ul><li class="small-space-below border-gray-medium border-bottom-1 position-relative js-ref-item" itemprop=citation itemscope itemtype=http://schema.org/Article><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">2.</span><p id=ref2 class=tiny-space-below><span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Lohr, J.G.</span></span> <i>et al.</i> <i>Nat. Biotechnol.</i> <b>32</b>, 479–484 (2014).</p><ul class="js-ref-links clean-list cleared strong sans-serif text13 hide-print"><li class=pin-right><ul class="clean-list ma0"><li class="pin-left pl20"><a href="http://chemport.cas.org/cgi-bin/sdcgi?APP=ftslink&amp;action=reflink&amp;origin=npg&amp;version=1.0&amp;coi=1:CAS:528:DC%2BC2cXmsVKrsr8%3D&amp;md5=26fea56bac9b796d0809a758f1664a4b" data-track=click data-track-source=link data-track-dest="link:Reference2 CAS"><span class=visually-hidden>View ref 2 on </span>CAS</a><li class="pin-left pl20"><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?holding=npg&amp;cmd=Retrieve&amp;db=PubMed&amp;list_uids=24752078&amp;dopt=Abstract" data-track=click data-track-source=link data-track-dest="link:Reference2 PubMed"><span class=visually-hidden>View ref 2 on </span>PubMed</a><li class="pin-left pl20"><a href=http://dx.doi.org/10.1038/nbt.2892 data-track=click data-track-source=link data-track-dest="link:Reference2 Article" itemprop=url>Article<span class=visually-hidden> ref 2</span></a></ul></ul><li class="small-space-below border-gray-medium border-bottom-1 position-relative js-ref-item" itemprop=citation itemscope itemtype=http://schema.org/Article><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">3.</span><p id=ref3 class=tiny-space-below><span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Shalek, A.K.</span></span> <i>et al.</i> <i>Nature</i> <b>510</b>, 363–369 (2014).</p><ul class="js-ref-links clean-list cleared strong sans-serif text13 hide-print"><li class=pin-right><ul class="clean-list ma0"><li class="pin-left pl20"><a href="http://chemport.cas.org/cgi-bin/sdcgi?APP=ftslink&amp;action=reflink&amp;origin=npg&amp;version=1.0&amp;coi=1:CAS:528:DC%2BC2cXpslGhs7g%3D&amp;md5=0f573d492813cfcd2c81c25246e4c6a8" data-track=click data-track-source=link data-track-dest="link:Reference3 CAS"><span class=visually-hidden>View ref 3 on </span>CAS</a><li class="pin-left pl20"><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?holding=npg&amp;cmd=Retrieve&amp;db=PubMed&amp;list_uids=24919153&amp;dopt=Abstract" data-track=click data-track-source=link data-track-dest="link:Reference3 PubMed"><span class=visually-hidden>View ref 3 on </span>PubMed</a><li class="pin-left pl20"><a href=http://dx.doi.org/10.1038/nature13437 data-track=click data-track-source=link data-track-dest="link:Reference3 Article" itemprop=url>Article<span class=visually-hidden> ref 3</span></a></ul></ul><li class="small-space-below border-gray-medium border-bottom-1 position-relative js-ref-item" itemprop=citation itemscope itemtype=http://schema.org/Article><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">4.</span><p id=ref4 class=tiny-space-below><span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Tirosh, I.</span></span> <i>et al.</i> <i>Science</i> <b>352</b>, 189–196 (2016).</p><ul class="js-ref-links clean-list cleared strong sans-serif text13 hide-print"><li class=pin-right><ul class="clean-list ma0"><li class="pin-left pl20"><a href="http://chemport.cas.org/cgi-bin/sdcgi?APP=ftslink&amp;action=reflink&amp;origin=npg&amp;version=1.0&amp;coi=1:CAS:528:DC%2BC28XlsFSmurk%3D&amp;md5=b2a4bd8d54defd8b63bf7add54284df0" data-track=click data-track-source=link data-track-dest="link:Reference4 CAS"><span class=visually-hidden>View ref 4 on </span>CAS</a><li class="pin-left pl20"><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?holding=npg&amp;cmd=Retrieve&amp;db=PubMed&amp;list_uids=27124452&amp;dopt=Abstract" data-track=click data-track-source=link data-track-dest="link:Reference4 PubMed"><span class=visually-hidden>View ref 4 on </span>PubMed</a><li class="pin-left pl20"><a href=http://dx.doi.org/10.1126/science.aad0501 data-track=click data-track-source=link data-track-dest="link:Reference4 Article" itemprop=url>Article<span class=visually-hidden> ref 4</span></a></ul></ul><li class="small-space-below border-gray-medium border-bottom-1 position-relative js-ref-item" itemprop=citation itemscope itemtype=http://schema.org/Article><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">5.</span><p id=ref5 class=tiny-space-below><span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Hashimshony, T.</span></span>, <span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Wagner, F.</span></span>, <span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Sher, N.</span></span> &amp; <span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Yanai, I.</span></span> <i>Cell Rep.</i> <b>2</b>, 666–673 (2012).</p><ul class="js-ref-links clean-list cleared strong sans-serif text13 hide-print"><li class=pin-right><ul class="clean-list ma0"><li class="pin-left pl20"><a href="http://chemport.cas.org/cgi-bin/sdcgi?APP=ftslink&amp;action=reflink&amp;origin=npg&amp;version=1.0&amp;coi=1:CAS:528:DC%2BC38XhsFSmsL3J&amp;md5=d88aa32fa595fd0c018e7b80bdb05d2a" data-track=click data-track-source=link data-track-dest="link:Reference5 CAS"><span class=visually-hidden>View ref 5 on </span>CAS</a><li class="pin-left pl20"><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?holding=npg&amp;cmd=Retrieve&amp;db=PubMed&amp;list_uids=22939981&amp;dopt=Abstract" data-track=click data-track-source=link data-track-dest="link:Reference5 PubMed"><span class=visually-hidden>View ref 5 on </span>PubMed</a><li class="pin-left pl20"><a href=http://dx.doi.org/10.1016/j.celrep.2012.08.003 data-track=click data-track-source=link data-track-dest="link:Reference5 Article" itemprop=url>Article<span class=visually-hidden> ref 5</span></a></ul></ul><li class="small-space-below border-gray-medium border-bottom-1 position-relative js-ref-item" itemprop=citation itemscope itemtype=http://schema.org/Article><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">6.</span><p id=ref6 class=tiny-space-below><span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Bendall, S.C.</span></span> <i>et al.</i> <i>Science</i> <b>332</b>, 687–696 (2011).</p><ul class="js-ref-links clean-list cleared strong sans-serif text13 hide-print"><li class=pin-right><ul class="clean-list ma0"><li class="pin-left pl20"><a href="http://chemport.cas.org/cgi-bin/sdcgi?APP=ftslink&amp;action=reflink&amp;origin=npg&amp;version=1.0&amp;coi=1:CAS:528:DC%2BC3MXlsVKrsrk%3D&amp;md5=39a04596950865bc31392ce03519efdd" data-track=click data-track-source=link data-track-dest="link:Reference6 CAS"><span class=visually-hidden>View ref 6 on </span>CAS</a><li class="pin-left pl20"><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?holding=npg&amp;cmd=Retrieve&amp;db=PubMed&amp;list_uids=21551058&amp;dopt=Abstract" data-track=click data-track-source=link data-track-dest="link:Reference6 PubMed"><span class=visually-hidden>View ref 6 on </span>PubMed</a><li class="pin-left pl20"><a href=http://dx.doi.org/10.1126/science.1198704 data-track=click data-track-source=link data-track-dest="link:Reference6 Article" itemprop=url>Article<span class=visually-hidden> ref 6</span></a></ul></ul><li class="small-space-below border-gray-medium border-bottom-1 position-relative js-ref-item" itemprop=citation itemscope itemtype=http://schema.org/Article><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">7.</span><p id=ref7 class=tiny-space-below><span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Buenrostro, J.D.</span></span> <i>et al.</i> <i>Nature</i> <b>523</b>, 486–490 (2015).</p><ul class="js-ref-links clean-list cleared strong sans-serif text13 hide-print"><li class=pin-right><ul class="clean-list ma0"><li class="pin-left pl20"><a href="http://chemport.cas.org/cgi-bin/sdcgi?APP=ftslink&amp;action=reflink&amp;origin=npg&amp;version=1.0&amp;coi=1:CAS:528:DC%2BC2MXhtFyltLrN&amp;md5=3390024398f86d3ba2e28ca2bfb699ff" data-track=click data-track-source=link data-track-dest="link:Reference7 CAS"><span class=visually-hidden>View ref 7 on </span>CAS</a><li class="pin-left pl20"><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?holding=npg&amp;cmd=Retrieve&amp;db=PubMed&amp;list_uids=26083756&amp;dopt=Abstract" data-track=click data-track-source=link data-track-dest="link:Reference7 PubMed"><span class=visually-hidden>View ref 7 on </span>PubMed</a><li class="pin-left pl20"><a href=http://dx.doi.org/10.1038/nature14590 data-track=click data-track-source=link data-track-dest="link:Reference7 Article" itemprop=url>Article<span class=visually-hidden> ref 7</span></a></ul></ul><li class="small-space-below border-gray-medium border-bottom-1 position-relative js-ref-item" itemprop=citation itemscope itemtype=http://schema.org/Article><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">8.</span><p id=ref8 class=tiny-space-below><span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Smallwood, S.A.</span></span> <i>et al.</i> <i>Nat. Methods</i> <b>11</b>, 817–820 (2014).</p><ul class="js-ref-links clean-list cleared strong sans-serif text13 hide-print"><li class=pin-right><ul class="clean-list ma0"><li class="pin-left pl20"><a href="http://chemport.cas.org/cgi-bin/sdcgi?APP=ftslink&amp;action=reflink&amp;origin=npg&amp;version=1.0&amp;coi=1:CAS:528:DC%2BC2cXhslelsLvN&amp;md5=d1cd42d1b89a1de9f10deeb0447c8e15" data-track=click data-track-source=link data-track-dest="link:Reference8 CAS"><span class=visually-hidden>View ref 8 on </span>CAS</a><li class="pin-left pl20"><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?holding=npg&amp;cmd=Retrieve&amp;db=PubMed&amp;list_uids=25042786&amp;dopt=Abstract" data-track=click data-track-source=link data-track-dest="link:Reference8 PubMed"><span class=visually-hidden>View ref 8 on </span>PubMed</a><li class="pin-left pl20"><a href=http://dx.doi.org/10.1038/nmeth.3035 data-track=click data-track-source=link data-track-dest="link:Reference8 Article" itemprop=url>Article<span class=visually-hidden> ref 8</span></a></ul></ul><li class="small-space-below border-gray-medium border-bottom-1 position-relative js-ref-item" itemprop=citation itemscope itemtype=http://schema.org/Article><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">9.</span><p id=ref9 class=tiny-space-below><span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Zeisel, A.</span></span> <i>et al.</i> <i>Science</i> <b>347</b>, 1138–1142 (2015).</p><ul class="js-ref-links clean-list cleared strong sans-serif text13 hide-print"><li class=pin-right><ul class="clean-list ma0"><li class="pin-left pl20"><a href="http://chemport.cas.org/cgi-bin/sdcgi?APP=ftslink&amp;action=reflink&amp;origin=npg&amp;version=1.0&amp;coi=1:CAS:528:DC%2BC2MXjsF2hsro%3D&amp;md5=4c7156df8d17616c6dc2de30ebeb2468" data-track=click data-track-source=link data-track-dest="link:Reference9 CAS"><span class=visually-hidden>View ref 9 on </span>CAS</a><li class="pin-left pl20"><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?holding=npg&amp;cmd=Retrieve&amp;db=PubMed&amp;list_uids=25700174&amp;dopt=Abstract" data-track=click data-track-source=link data-track-dest="link:Reference9 PubMed"><span class=visually-hidden>View ref 9 on </span>PubMed</a><li class="pin-left pl20"><a href=http://dx.doi.org/10.1126/science.aaa1934 data-track=click data-track-source=link data-track-dest="link:Reference9 Article" itemprop=url>Article<span class=visually-hidden> ref 9</span></a></ul></ul><li class="small-space-below border-gray-medium border-bottom-1 position-relative js-ref-item" itemprop=citation itemscope itemtype=http://schema.org/Article><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">10.</span><p id=ref10 class=tiny-space-below><span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Treutlein, B.</span></span> <i>et al.</i> <i>Nature</i> <b>509</b>, 371–375 (2014).</p><ul class="js-ref-links clean-list cleared strong sans-serif text13 hide-print"><li class=pin-right><ul class="clean-list ma0"><li class="pin-left pl20"><a href="http://chemport.cas.org/cgi-bin/sdcgi?APP=ftslink&amp;action=reflink&amp;origin=npg&amp;version=1.0&amp;coi=1:CAS:528:DC%2BC2cXotVyqtLk%3D&amp;md5=ec1105b0b2569e53d98cef9b9260da55" data-track=click data-track-source=link data-track-dest="link:Reference10 CAS"><span class=visually-hidden>View ref 10 on </span>CAS</a><li class="pin-left pl20"><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?holding=npg&amp;cmd=Retrieve&amp;db=PubMed&amp;list_uids=24739965&amp;dopt=Abstract" data-track=click data-track-source=link data-track-dest="link:Reference10 PubMed"><span class=visually-hidden>View ref 10 on </span>PubMed</a><li class="pin-left pl20"><a href=http://dx.doi.org/10.1038/nature13173 data-track=click data-track-source=link data-track-dest="link:Reference10 Article" itemprop=url>Article<span class=visually-hidden> ref 10</span></a></ul></ul><li class="small-space-below border-gray-medium border-bottom-1 position-relative js-ref-item" itemprop=citation itemscope itemtype=http://schema.org/Article><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">11.</span><p id=ref11 class=tiny-space-below><span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Klein, A.M.</span></span> <i>et al.</i> <i>Cell</i> <b>161</b>, 1187–1201 (2015).</p><ul class="js-ref-links clean-list cleared strong sans-serif text13 hide-print"><li class=pin-right><ul class="clean-list ma0"><li class="pin-left pl20"><a href="http://chemport.cas.org/cgi-bin/sdcgi?APP=ftslink&amp;action=reflink&amp;origin=npg&amp;version=1.0&amp;coi=1:CAS:528:DC%2BC2MXpt1SgtL0%3D&amp;md5=5586276c84deb00c0553f96896e6850c" data-track=click data-track-source=link data-track-dest="link:Reference11 CAS"><span class=visually-hidden>View ref 11 on </span>CAS</a><li class="pin-left pl20"><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?holding=npg&amp;cmd=Retrieve&amp;db=PubMed&amp;list_uids=26000487&amp;dopt=Abstract" data-track=click data-track-source=link data-track-dest="link:Reference11 PubMed"><span class=visually-hidden>View ref 11 on </span>PubMed</a><li class="pin-left pl20"><a href=http://dx.doi.org/10.1016/j.cell.2015.04.044 data-track=click data-track-source=link data-track-dest="link:Reference11 Article" itemprop=url>Article<span class=visually-hidden> ref 11</span></a></ul></ul><li class="small-space-below border-gray-medium border-bottom-1 position-relative js-ref-item" itemprop=citation itemscope itemtype=http://schema.org/Article><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">12.</span><p id=ref12 class=tiny-space-below><span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Macosko, E.Z.</span></span> <i>et al.</i> <i>Cell</i> <b>161</b>, 1202–1214 (2015).</p><ul class="js-ref-links clean-list cleared strong sans-serif text13 hide-print"><li class=pin-right><ul class="clean-list ma0"><li class="pin-left pl20"><a href="http://chemport.cas.org/cgi-bin/sdcgi?APP=ftslink&amp;action=reflink&amp;origin=npg&amp;version=1.0&amp;coi=1:CAS:528:DC%2BC2MXpt1Sgt7o%3D&amp;md5=9bbb3e39b992ba07e2b8d8b60807c78a" data-track=click data-track-source=link data-track-dest="link:Reference12 CAS"><span class=visually-hidden>View ref 12 on </span>CAS</a><li class="pin-left pl20"><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?holding=npg&amp;cmd=Retrieve&amp;db=PubMed&amp;list_uids=26000488&amp;dopt=Abstract" data-track=click data-track-source=link data-track-dest="link:Reference12 PubMed"><span class=visually-hidden>View ref 12 on </span>PubMed</a><li class="pin-left pl20"><a href=http://dx.doi.org/10.1016/j.cell.2015.05.002 data-track=click data-track-source=link data-track-dest="link:Reference12 Article" itemprop=url>Article<span class=visually-hidden> ref 12</span></a></ul></ul><li class="small-space-below border-gray-medium border-bottom-1 position-relative js-ref-item" itemprop=citation itemscope itemtype=http://schema.org/Article><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">13.</span><p id=ref13 class=tiny-space-below><span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Fan, H.C.</span></span>, <span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Fu, G.K.</span></span> &amp; <span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Fodor, S.P.</span></span> <i>Science</i> <b>347</b>, 1258367 (2015).</p><ul class="js-ref-links clean-list cleared strong sans-serif text13 hide-print"><li class=pin-right><ul class="clean-list ma0"><li class="pin-left pl20"><a href="http://chemport.cas.org/cgi-bin/sdcgi?APP=ftslink&amp;action=reflink&amp;origin=npg&amp;version=1.0&amp;coi=1:CAS:528:DC%2BC2MXhvFegt7k%3D&amp;md5=6beab9de634db2adc7674f9042c510d6" data-track=click data-track-source=link data-track-dest="link:Reference13 CAS"><span class=visually-hidden>View ref 13 on </span>CAS</a><li class="pin-left pl20"><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?holding=npg&amp;cmd=Retrieve&amp;db=PubMed&amp;list_uids=25657253&amp;dopt=Abstract" data-track=click data-track-source=link data-track-dest="link:Reference13 PubMed"><span class=visually-hidden>View ref 13 on </span>PubMed</a><li class="pin-left pl20"><a href=http://dx.doi.org/10.1126/science.1258367 data-track=click data-track-source=link data-track-dest="link:Reference13 Article" itemprop=url>Article<span class=visually-hidden> ref 13</span></a></ul></ul><li class="small-space-below border-gray-medium border-bottom-1 position-relative js-ref-item" itemprop=citation itemscope itemtype=http://schema.org/Article><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">14.</span><p id=ref14 class=tiny-space-below><span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Bose, S.</span></span> <i>et al.</i> <i>Genome Biol.</i> <b>16</b>, 120 (2015).</p><ul class="js-ref-links clean-list cleared strong sans-serif text13 hide-print"><li class=pin-right><ul class="clean-list ma0"><li class="pin-left pl20"><a href="http://chemport.cas.org/cgi-bin/sdcgi?APP=ftslink&amp;action=reflink&amp;origin=npg&amp;version=1.0&amp;coi=1:CAS:528:DC%2BC2MXhtlCnsLrN&amp;md5=0f2d69bf452ee4d161595c931ace0934" data-track=click data-track-source=link data-track-dest="link:Reference14 CAS"><span class=visually-hidden>View ref 14 on </span>CAS</a><li class="pin-left pl20"><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?holding=npg&amp;cmd=Retrieve&amp;db=PubMed&amp;list_uids=26047807&amp;dopt=Abstract" data-track=click data-track-source=link data-track-dest="link:Reference14 PubMed"><span class=visually-hidden>View ref 14 on </span>PubMed</a><li class="pin-left pl20"><a href=http://dx.doi.org/10.1186/s13059-015-0684-3 data-track=click data-track-source=link data-track-dest="link:Reference14 Article" itemprop=url>Article<span class=visually-hidden> ref 14</span></a></ul></ul><li class="small-space-below border-gray-medium border-bottom-1 position-relative js-ref-item" itemprop=citation itemscope itemtype=http://schema.org/Article><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">15.</span><p id=ref15 class=tiny-space-below><span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Yuan, J.</span></span> &amp; <span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Sims, P.A.</span></span> <i>Sci. Rep.</i> <b>6</b>, 33883 (2016).</p><ul class="js-ref-links clean-list cleared strong sans-serif text13 hide-print"><li class=pin-right><ul class="clean-list ma0"><li class="pin-left pl20"><a href="http://chemport.cas.org/cgi-bin/sdcgi?APP=ftslink&amp;action=reflink&amp;origin=npg&amp;version=1.0&amp;coi=1:CAS:528:DC%2BC28XhsF2qs7vF&amp;md5=ac9a2a2132e9336bcd3c40b84d206f85" data-track=click data-track-source=link data-track-dest="link:Reference15 CAS"><span class=visually-hidden>View ref 15 on </span>CAS</a><li class="pin-left pl20"><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?holding=npg&amp;cmd=Retrieve&amp;db=PubMed&amp;list_uids=27670648&amp;dopt=Abstract" data-track=click data-track-source=link data-track-dest="link:Reference15 PubMed"><span class=visually-hidden>View ref 15 on </span>PubMed</a><li class="pin-left pl20"><a href=http://dx.doi.org/10.1038/srep33883 data-track=click data-track-source=link data-track-dest="link:Reference15 Article" itemprop=url>Article<span class=visually-hidden> ref 15</span></a></ul></ul><li class="small-space-below border-gray-medium border-bottom-1 position-relative js-ref-item" itemprop=citation itemscope itemtype=http://schema.org/Article><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">16.</span><p id=ref16 class=tiny-space-below><span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>DeKosky, B.J.</span></span> <i>et al.</i> <i>Nat. Biotechnol.</i> <b>31</b>, 166–169 (2013).</p><ul class="js-ref-links clean-list cleared strong sans-serif text13 hide-print"><li class=pin-right><ul class="clean-list ma0"><li class="pin-left pl20"><a href="http://chemport.cas.org/cgi-bin/sdcgi?APP=ftslink&amp;action=reflink&amp;origin=npg&amp;version=1.0&amp;coi=1:CAS:528:DC%2BC3sXhtFSitLk%3D&amp;md5=60deb2ffff4f69957234f47056dea269" data-track=click data-track-source=link data-track-dest="link:Reference16 CAS"><span class=visually-hidden>View ref 16 on </span>CAS</a><li class="pin-left pl20"><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?holding=npg&amp;cmd=Retrieve&amp;db=PubMed&amp;list_uids=23334449&amp;dopt=Abstract" data-track=click data-track-source=link data-track-dest="link:Reference16 PubMed"><span class=visually-hidden>View ref 16 on </span>PubMed</a><li class="pin-left pl20"><a href=http://dx.doi.org/10.1038/nbt.2492 data-track=click data-track-source=link data-track-dest="link:Reference16 Article" itemprop=url>Article<span class=visually-hidden> ref 16</span></a></ul></ul><li class="small-space-below border-gray-medium border-bottom-1 position-relative js-ref-item" itemprop=citation itemscope itemtype=http://schema.org/Article><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">17.</span><p id=ref17 class=tiny-space-below><span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Ilicic, T.</span></span> <i>et al.</i> <i>Genome Biol.</i> <b>17</b>, 29 (2016).</p><ul class="js-ref-links clean-list cleared strong sans-serif text13 hide-print"><li class=pin-right><ul class="clean-list ma0"><li class="pin-left pl20"><a href="http://chemport.cas.org/cgi-bin/sdcgi?APP=ftslink&amp;action=reflink&amp;origin=npg&amp;version=1.0&amp;coi=1:CAS:528:DC%2BC28Xps1egsrk%3D&amp;md5=2d62701d342477efd4bfdbdb9af6f24a" data-track=click data-track-source=link data-track-dest="link:Reference17 CAS"><span class=visually-hidden>View ref 17 on </span>CAS</a><li class="pin-left pl20"><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?holding=npg&amp;cmd=Retrieve&amp;db=PubMed&amp;list_uids=26887813&amp;dopt=Abstract" data-track=click data-track-source=link data-track-dest="link:Reference17 PubMed"><span class=visually-hidden>View ref 17 on </span>PubMed</a><li class="pin-left pl20"><a href=http://dx.doi.org/10.1186/s13059-016-0888-1 data-track=click data-track-source=link data-track-dest="link:Reference17 Article" itemprop=url>Article<span class=visually-hidden> ref 17</span></a></ul></ul><li class="small-space-below border-gray-medium border-bottom-1 position-relative js-ref-item" itemprop=citation itemscope itemtype=http://schema.org/Article><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">18.</span><p id=ref18 class=tiny-space-below><span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Yamanaka, Y.J.</span></span> <i>et al.</i> <i>Integr. Biol. (Camb.)</i> <b>4</b>, 1175–1184 (2012).</p><ul class="js-ref-links clean-list cleared strong sans-serif text13 hide-print"><li class=pin-right><ul class="clean-list ma0"><li class="pin-left pl20"><a href="http://chemport.cas.org/cgi-bin/sdcgi?APP=ftslink&amp;action=reflink&amp;origin=npg&amp;version=1.0&amp;coi=1:CAS:528:DC%2BC38XhsVWgsrzO&amp;md5=8e494d2b2afe8889b726bed3cd2c5feb" data-track=click data-track-source=link data-track-dest="link:Reference18 CAS"><span class=visually-hidden>View ref 18 on </span>CAS</a><li class="pin-left pl20"><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?holding=npg&amp;cmd=Retrieve&amp;db=PubMed&amp;list_uids=22945136&amp;dopt=Abstract" data-track=click data-track-source=link data-track-dest="link:Reference18 PubMed"><span class=visually-hidden>View ref 18 on </span>PubMed</a><li class="pin-left pl20"><a href=http://dx.doi.org/10.1039/c2ib20167d data-track=click data-track-source=link data-track-dest="link:Reference18 Article" itemprop=url>Article<span class=visually-hidden> ref 18</span></a></ul></ul><li class="small-space-below border-gray-medium border-bottom-1 position-relative js-ref-item" itemprop=citation itemscope itemtype=http://schema.org/Article><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">19.</span><p id=ref19 class=tiny-space-below><span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Han, Q.</span></span> <i>et al.</i> <i>Proc. Natl. Acad. Sci. USA</i> <b>109</b>, 1607–1612 (2012).</p><ul class="js-ref-links clean-list cleared strong sans-serif text13 hide-print"><li class=pin-right><ul class="clean-list ma0"><li class="pin-left pl20"><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?holding=npg&amp;cmd=Retrieve&amp;db=PubMed&amp;list_uids=22160692&amp;dopt=Abstract" data-track=click data-track-source=link data-track-dest="link:Reference19 PubMed"><span class=visually-hidden>View ref 19 on </span>PubMed</a><li class="pin-left pl20"><a href=http://dx.doi.org/10.1073/pnas.1117194109 data-track=click data-track-source=link data-track-dest="link:Reference19 Article" itemprop=url>Article<span class=visually-hidden> ref 19</span></a></ul></ul><li class="small-space-below border-gray-medium border-bottom-1 position-relative js-ref-item" itemprop=citation itemscope itemtype=http://schema.org/Article><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">20.</span><p id=ref20 class=tiny-space-below><span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Steinberg, G.</span></span>, <span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Stromsborg, K.</span></span>, <span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Thomas, L.</span></span>, <span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Barker, D.</span></span> &amp; <span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Zhao, C.</span></span> <i>Biopolymers</i> <b>73</b>, 597–605 (2004).</p><ul class="js-ref-links clean-list cleared strong sans-serif text13 hide-print"><li class=pin-right><ul class="clean-list ma0"><li class="pin-left pl20"><a href="http://chemport.cas.org/cgi-bin/sdcgi?APP=ftslink&amp;action=reflink&amp;origin=npg&amp;version=1.0&amp;coi=1:CAS:528:DC%2BD2cXjt1Slt7g%3D&amp;md5=b5323cf791847ae73d4b3b2cfbead92f" data-track=click data-track-source=link data-track-dest="link:Reference20 CAS"><span class=visually-hidden>View ref 20 on </span>CAS</a><li class="pin-left pl20"><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?holding=npg&amp;cmd=Retrieve&amp;db=PubMed&amp;list_uids=15048783&amp;dopt=Abstract" data-track=click data-track-source=link data-track-dest="link:Reference20 PubMed"><span class=visually-hidden>View ref 20 on </span>PubMed</a><li class="pin-left pl20"><a href=http://dx.doi.org/10.1002/bip.20006 data-track=click data-track-source=link data-track-dest="link:Reference20 Article" itemprop=url>Article<span class=visually-hidden> ref 20</span></a></ul></ul><li class="small-space-below border-gray-medium border-bottom-1 position-relative js-ref-item" itemprop=citation itemscope itemtype=http://schema.org/Article><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">21.</span><p id=ref21 class=tiny-space-below><span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Gierahn, T.</span></span> <i>et al.</i> <cite itemprop="name headline">Seq-Well protocol</cite>. <i>Protocol Exchange</i> <a href=https://doi.org/10.1038/protex.2017.006a itemprop=url>http://dx.doi.org/10.1038/protex.2017.006a</a> (2017).</p><ul class="js-ref-links clean-list cleared strong sans-serif text13 hide-print"></ul><li class="small-space-below border-gray-medium border-bottom-1 position-relative js-ref-item" itemprop=citation itemscope itemtype=http://schema.org/Article><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">22.</span><p id=ref22 class=tiny-space-below><span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Roederer, M.</span></span> <i>Current Protocols in Cytometry</i> (eds. Robinson, J.P. <i>et al.</i>) Unit 1.14 (Wiley, 2002).</p><ul class="js-ref-links clean-list cleared strong sans-serif text13 hide-print"></ul><li class="small-space-below border-gray-medium border-bottom-1 position-relative js-ref-item" itemprop=citation itemscope itemtype=http://schema.org/Article><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">23.</span><p id=ref23 class=tiny-space-below><span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Satija, R.</span></span>, <span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Farrell, J.A.</span></span>, <span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Gennert, D.</span></span>, <span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Schier, A.F.</span></span> &amp; <span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Regev, A.</span></span> <i>Nat. Biotechnol.</i> <b>33</b>, 495–502 (2015).</p><ul class="js-ref-links clean-list cleared strong sans-serif text13 hide-print"><li class=pin-right><ul class="clean-list ma0"><li class="pin-left pl20"><a href="http://chemport.cas.org/cgi-bin/sdcgi?APP=ftslink&amp;action=reflink&amp;origin=npg&amp;version=1.0&amp;coi=1:CAS:528:DC%2BC2MXmtlKktLo%3D&amp;md5=00f4c65454e4c852aa86be531f53f4a7" data-track=click data-track-source=link data-track-dest="link:Reference23 CAS"><span class=visually-hidden>View ref 23 on </span>CAS</a><li class="pin-left pl20"><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?holding=npg&amp;cmd=Retrieve&amp;db=PubMed&amp;list_uids=25867923&amp;dopt=Abstract" data-track=click data-track-source=link data-track-dest="link:Reference23 PubMed"><span class=visually-hidden>View ref 23 on </span>PubMed</a><li class="pin-left pl20"><a href=http://dx.doi.org/10.1038/nbt.3192 data-track=click data-track-source=link data-track-dest="link:Reference23 Article" itemprop=url>Article<span class=visually-hidden> ref 23</span></a></ul></ul><li class="small-space-below border-gray-medium border-bottom-1 position-relative js-ref-item" itemprop=citation itemscope itemtype=http://schema.org/Article><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">24.</span><p id=ref24 class=tiny-space-below><span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Buettner, F.</span></span> <i>et al.</i> <i>Nat. Biotechnol.</i> <b>33</b>, 155–160 (2015).</p><ul class="js-ref-links clean-list cleared strong sans-serif text13 hide-print"><li class=pin-right><ul class="clean-list ma0"><li class="pin-left pl20"><a href="http://chemport.cas.org/cgi-bin/sdcgi?APP=ftslink&amp;action=reflink&amp;origin=npg&amp;version=1.0&amp;coi=1:CAS:528:DC%2BC2MXhtFKjsLs%3D&amp;md5=69c7ea33ddc5bb53ba9a0e6cbf4ff466" data-track=click data-track-source=link data-track-dest="link:Reference24 CAS"><span class=visually-hidden>View ref 24 on </span>CAS</a><li class="pin-left pl20"><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?holding=npg&amp;cmd=Retrieve&amp;db=PubMed&amp;list_uids=25599176&amp;dopt=Abstract" data-track=click data-track-source=link data-track-dest="link:Reference24 PubMed"><span class=visually-hidden>View ref 24 on </span>PubMed</a><li class="pin-left pl20"><a href=http://dx.doi.org/10.1038/nbt.3102 data-track=click data-track-source=link data-track-dest="link:Reference24 Article" itemprop=url>Article<span class=visually-hidden> ref 24</span></a></ul></ul><li class="small-space-below border-gray-medium border-bottom-1 position-relative js-ref-item" itemprop=citation itemscope itemtype=http://schema.org/Article><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">25.</span><p id=ref25 class=tiny-space-below><span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Levine, J.H.</span></span> <i>et al.</i> <i>Cell</i> <b>162</b>, 184–197 (2015).</p><ul class="js-ref-links clean-list cleared strong sans-serif text13 hide-print"><li class=pin-right><ul class="clean-list ma0"><li class="pin-left pl20"><a href="http://chemport.cas.org/cgi-bin/sdcgi?APP=ftslink&amp;action=reflink&amp;origin=npg&amp;version=1.0&amp;coi=1:CAS:528:DC%2BC2MXhtV2it7jE&amp;md5=da929a896ddfc14dad4edde8351d1328" data-track=click data-track-source=link data-track-dest="link:Reference25 CAS"><span class=visually-hidden>View ref 25 on </span>CAS</a><li class="pin-left pl20"><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?holding=npg&amp;cmd=Retrieve&amp;db=PubMed&amp;list_uids=26095251&amp;dopt=Abstract" data-track=click data-track-source=link data-track-dest="link:Reference25 PubMed"><span class=visually-hidden>View ref 25 on </span>PubMed</a><li class="pin-left pl20"><a href=http://dx.doi.org/10.1016/j.cell.2015.05.047 data-track=click data-track-source=link data-track-dest="link:Reference25 Article" itemprop=url>Article<span class=visually-hidden> ref 25</span></a></ul></ul><li class="small-space-below border-gray-medium border-bottom-1 position-relative js-ref-item" itemprop=citation itemscope itemtype=http://schema.org/Article><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">26.</span><p id=ref26 class=tiny-space-below><span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Xu, C.</span></span> &amp; <span itemprop=author itemscope itemtype=http://schema.org/Person><span itemprop=name>Su, Z.</span></span> <i>Bioinformatics</i> <b>31</b>, 1974–1980 (2015).</p><ul class="js-ref-links clean-list cleared strong sans-serif text13 hide-print"><li class=pin-right><ul class="clean-list ma0"><li class="pin-left pl20"><a href="http://chemport.cas.org/cgi-bin/sdcgi?APP=ftslink&amp;action=reflink&amp;origin=npg&amp;version=1.0&amp;coi=1:CAS:528:DC%2BC28Xht1egu7fN&amp;md5=6a712a0298f2918934e9a2255316c889" data-track=click data-track-source=link data-track-dest="link:Reference26 CAS"><span class=visually-hidden>View ref 26 on </span>CAS</a><li class="pin-left pl20"><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?holding=npg&amp;cmd=Retrieve&amp;db=PubMed&amp;list_uids=25805722&amp;dopt=Abstract" data-track=click data-track-source=link data-track-dest="link:Reference26 PubMed"><span class=visually-hidden>View ref 26 on </span>PubMed</a><li class="pin-left pl20"><a href=http://dx.doi.org/10.1093/bioinformatics/btv088 data-track=click data-track-source=link data-track-dest="link:Reference26 Article" itemprop=url>Article<span class=visually-hidden> ref 26</span></a></ul></ul></ol><p class="hide-print text-right"><a href=/articles/nmeth.4179-references.ris class="text14 sans-serif strong" data-track=click data-track-source=download data-track-dest="link:Download references">Download references</a></p></div></div></div></section><section aria-labelledby=acknowledgements><div class="serif article-section js-article-section cleared clear" id=acknowledgements-section><h2 class="js-section-title section-title position-relative strong tighten-line-height background-gray-light pt20 pb6 pl0 pr20 standard-space-below mq640-pt20 mq640-pb10 mq640-pl20 mq640-mt0 extend-left small-space-above" id=acknowledgements>Acknowledgements</h2><div class="pl20 mq875-pl0 js-collapsible-section" id=acknowledgements-content><p>We thank K. Shekhar, T. Tickle, and M. Xie for fruitful discussions. This work was supported by the Searle Scholars Program (A.K.S.), the Beckman Young Investigator Program (NIH, A.K.S.), NIH New Innovator Award DP2 OD020839 (A.K.S.), NIH U24 AI118762 (A.K.S.), P50 HG006193 (A.K.S.), the Bill and Melinda Gates Foundation grant 03629000189 (A.K.S., J.C.L. and S.F.), the Ragon Institute (A.K.S. and S.F.), the Burroughs Wellcome Foundation (S.F.), NIH P30 AI060354 (S.F.), DP3 DK09768101 (NIH, J.C.L.), P01 AI045757 (J.C.L.), NIH R21 AI106025 (J.C.L.), NIH R56 AI104274 (J.C.L.), the W.M. Keck Foundation (J.C.L.), and the US Army Research Office through the Institute for Soldier Nanotechnologies, under contract number W911NF-13-D-0001 (J.C.L.). This work was also supported in part by the Koch Institute Support (core) NIH Grant P30-CA14051 from the National Cancer Institute. J.C.L. is a Camille Dreyfus Teacher–Scholar.</p></div></div></section><section aria-labelledby=author-information><div class="serif article-section js-article-section cleared clear" id=author-information-section><h2 class="js-section-title section-title position-relative strong tighten-line-height background-gray-light pt20 pb6 pl0 pr20 standard-space-below mq640-pt20 mq640-pb10 mq640-pl20 mq640-mt0 extend-left small-space-above" id=author-information>Author information</h2><div class="pl20 mq875-pl0 js-collapsible-section" id=author-information-content><h2 class="h3 strong mb4 visually-hidden" id=author-notes>Author notes</h2><ol class=clean-list><li class="suppress-bottom-margin small-space-below" id=n1><ul class="clean-list inline-list h3 strong ma0"><li><span class=js-separator></span><span>Todd M Gierahn</span><li><span class=js-separator>, </span><span>Marc H Wadsworth II</span><li><span class=js-separator>&nbsp;&amp; </span><span>Travis K Hughes</span></ul> <p>These authors contributed equally to this work.</p><li class="suppress-bottom-margin small-space-below" id=n2><ul class="clean-list inline-list h3 strong ma0"><li><span class=js-separator></span><span>J Christopher Love</span><li><span class=js-separator>&nbsp;&amp; </span><span>Alex K Shalek</span></ul> <p>These senior authors contributed equally to this work.</p></ol><h2 class="h3 strong mb4" id=affiliations>Affiliations</h2><ol class=clean-list><li id=a1><h3 class=emphasis>Koch Institute for Integrative Cancer Research, MIT, Cambridge, Massachusetts, USA.</h3><ul class="small-space-below clean-list inline-list"><li><span class=js-separator></span><span>Todd M Gierahn</span><li><span class=js-separator>&nbsp;&amp; </span><span>J Christopher Love</span></ul><li id=a2><h3 class=emphasis>Institute for Medical Engineering &amp; Science (IMES) and Department of Chemistry, MIT, Cambridge, Massachusetts, USA.</h3><ul class="small-space-below clean-list inline-list"><li><span class=js-separator></span><span>Marc H Wadsworth II</span><li><span class=js-separator>, </span><span>Travis K Hughes</span><li><span class=js-separator>&nbsp;&amp; </span><span>Alex K Shalek</span></ul><li id=a3><h3 class=emphasis>Broad Institute of MIT and Harvard, Cambridge, Massachusetts, USA.</h3><ul class="small-space-below clean-list inline-list"><li><span class=js-separator></span><span>Marc H Wadsworth II</span><li><span class=js-separator>, </span><span>Travis K Hughes</span><li><span class=js-separator>, </span><span>J Christopher Love</span><li><span class=js-separator>&nbsp;&amp; </span><span>Alex K Shalek</span></ul><li id=a4><h3 class=emphasis>Ragon Institute of MGH, MIT and Harvard, Cambridge, Massachusetts, USA.</h3><ul class="small-space-below clean-list inline-list"><li><span class=js-separator></span><span>Marc H Wadsworth II</span><li><span class=js-separator>, </span><span>Travis K Hughes</span><li><span class=js-separator>, </span><span>Bryan D Bryson</span><li><span class=js-separator>, </span><span>Sarah Fortune</span><li><span class=js-separator>, </span><span>J Christopher Love</span><li><span class=js-separator>&nbsp;&amp; </span><span>Alex K Shalek</span></ul><li id=a5><h3 class=emphasis>Department of Immunology and Infectious Diseases, Harvard School of Public Health, Boston, Massachusetts, USA.</h3><ul class="small-space-below clean-list inline-list"><li><span class=js-separator></span><span>Bryan D Bryson</span><li><span class=js-separator>&nbsp;&amp; </span><span>Sarah Fortune</span></ul><li id=a6><h3 class=emphasis>Center for Genomics and Systems Biology, Department of Biology, New York University, New York, New York, USA.</h3><ul class="small-space-below clean-list inline-list"><li><span class=js-separator></span><span>Andrew Butler</span><li><span class=js-separator>&nbsp;&amp; </span><span>Rahul Satija</span></ul><li id=a7><h3 class=emphasis>New York Genome Center, New York, New York, USA.</h3><ul class="small-space-below clean-list inline-list"><li><span class=js-separator></span><span>Andrew Butler</span><li><span class=js-separator>&nbsp;&amp; </span><span>Rahul Satija</span></ul></ol><div class=js-hide><h2 class="h3 strong">Authors</h2><ol class=clean-list><li id=auth-1><h3 class="sans-serif strong text-gray-light js-search-name">Search for Todd M Gierahn in:</h3><ul class="text13 clean-list inline-list strong small-space-below"><li><a href="/search/executeSearch?sp-q=%22Todd%20M+Gierahn%22&amp;sp-p=all&amp;pag-start=1&amp;sp-c=25&amp;sp-m=1&amp;sp-s=date_descending">Nature Research journals</a> <span class=bullet>&bull;</span> <li><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=search&amp;term=Todd%20M+Gierahn">PubMed</a> <span class=bullet>&bull;</span> <li><a href="http://scholar.google.co.uk/scholar?as_q=&amp;num=10&amp;btnG=Search+Scholar&amp;as_epq=&amp;as_oq=&amp;as_eq=&amp;as_occt=any&amp;as_sauthors=%22Todd%20M+Gierahn%22&amp;as_publication=&amp;as_ylo=&amp;as_yhi=&amp;as_allsubj=all&amp;hl=en">Google Scholar</a></ul><li id=auth-2><h3 class="sans-serif strong text-gray-light js-search-name">Search for Marc H Wadsworth in:</h3><ul class="text13 clean-list inline-list strong small-space-below"><li><a href="/search/executeSearch?sp-q=%22Marc%20H+Wadsworth%22&amp;sp-p=all&amp;pag-start=1&amp;sp-c=25&amp;sp-m=1&amp;sp-s=date_descending">Nature Research journals</a> <span class=bullet>&bull;</span> <li><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=search&amp;term=Marc%20H+Wadsworth">PubMed</a> <span class=bullet>&bull;</span> <li><a href="http://scholar.google.co.uk/scholar?as_q=&amp;num=10&amp;btnG=Search+Scholar&amp;as_epq=&amp;as_oq=&amp;as_eq=&amp;as_occt=any&amp;as_sauthors=%22Marc%20H+Wadsworth%22&amp;as_publication=&amp;as_ylo=&amp;as_yhi=&amp;as_allsubj=all&amp;hl=en">Google Scholar</a></ul><li id=auth-3><h3 class="sans-serif strong text-gray-light js-search-name">Search for Travis K Hughes in:</h3><ul class="text13 clean-list inline-list strong small-space-below"><li><a href="/search/executeSearch?sp-q=%22Travis%20K+Hughes%22&amp;sp-p=all&amp;pag-start=1&amp;sp-c=25&amp;sp-m=1&amp;sp-s=date_descending">Nature Research journals</a> <span class=bullet>&bull;</span> <li><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=search&amp;term=Travis%20K+Hughes">PubMed</a> <span class=bullet>&bull;</span> <li><a href="http://scholar.google.co.uk/scholar?as_q=&amp;num=10&amp;btnG=Search+Scholar&amp;as_epq=&amp;as_oq=&amp;as_eq=&amp;as_occt=any&amp;as_sauthors=%22Travis%20K+Hughes%22&amp;as_publication=&amp;as_ylo=&amp;as_yhi=&amp;as_allsubj=all&amp;hl=en">Google Scholar</a></ul><li id=auth-4><h3 class="sans-serif strong text-gray-light js-search-name">Search for Bryan D Bryson in:</h3><ul class="text13 clean-list inline-list strong small-space-below"><li><a href="/search/executeSearch?sp-q=%22Bryan%20D+Bryson%22&amp;sp-p=all&amp;pag-start=1&amp;sp-c=25&amp;sp-m=1&amp;sp-s=date_descending">Nature Research journals</a> <span class=bullet>&bull;</span> <li><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=search&amp;term=Bryan%20D+Bryson">PubMed</a> <span class=bullet>&bull;</span> <li><a href="http://scholar.google.co.uk/scholar?as_q=&amp;num=10&amp;btnG=Search+Scholar&amp;as_epq=&amp;as_oq=&amp;as_eq=&amp;as_occt=any&amp;as_sauthors=%22Bryan%20D+Bryson%22&amp;as_publication=&amp;as_ylo=&amp;as_yhi=&amp;as_allsubj=all&amp;hl=en">Google Scholar</a></ul><li id=auth-5><h3 class="sans-serif strong text-gray-light js-search-name">Search for Andrew Butler in:</h3><ul class="text13 clean-list inline-list strong small-space-below"><li><a href="/search/executeSearch?sp-q=%22Andrew+Butler%22&amp;sp-p=all&amp;pag-start=1&amp;sp-c=25&amp;sp-m=1&amp;sp-s=date_descending">Nature Research journals</a> <span class=bullet>&bull;</span> <li><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=search&amp;term=Andrew+Butler">PubMed</a> <span class=bullet>&bull;</span> <li><a href="http://scholar.google.co.uk/scholar?as_q=&amp;num=10&amp;btnG=Search+Scholar&amp;as_epq=&amp;as_oq=&amp;as_eq=&amp;as_occt=any&amp;as_sauthors=%22Andrew+Butler%22&amp;as_publication=&amp;as_ylo=&amp;as_yhi=&amp;as_allsubj=all&amp;hl=en">Google Scholar</a></ul><li id=auth-6><h3 class="sans-serif strong text-gray-light js-search-name">Search for Rahul Satija in:</h3><ul class="text13 clean-list inline-list strong small-space-below"><li><a href="/search/executeSearch?sp-q=%22Rahul+Satija%22&amp;sp-p=all&amp;pag-start=1&amp;sp-c=25&amp;sp-m=1&amp;sp-s=date_descending">Nature Research journals</a> <span class=bullet>&bull;</span> <li><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=search&amp;term=Rahul+Satija">PubMed</a> <span class=bullet>&bull;</span> <li><a href="http://scholar.google.co.uk/scholar?as_q=&amp;num=10&amp;btnG=Search+Scholar&amp;as_epq=&amp;as_oq=&amp;as_eq=&amp;as_occt=any&amp;as_sauthors=%22Rahul+Satija%22&amp;as_publication=&amp;as_ylo=&amp;as_yhi=&amp;as_allsubj=all&amp;hl=en">Google Scholar</a></ul><li id=auth-7><h3 class="sans-serif strong text-gray-light js-search-name">Search for Sarah Fortune in:</h3><ul class="text13 clean-list inline-list strong small-space-below"><li><a href="/search/executeSearch?sp-q=%22Sarah+Fortune%22&amp;sp-p=all&amp;pag-start=1&amp;sp-c=25&amp;sp-m=1&amp;sp-s=date_descending">Nature Research journals</a> <span class=bullet>&bull;</span> <li><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=search&amp;term=Sarah+Fortune">PubMed</a> <span class=bullet>&bull;</span> <li><a href="http://scholar.google.co.uk/scholar?as_q=&amp;num=10&amp;btnG=Search+Scholar&amp;as_epq=&amp;as_oq=&amp;as_eq=&amp;as_occt=any&amp;as_sauthors=%22Sarah+Fortune%22&amp;as_publication=&amp;as_ylo=&amp;as_yhi=&amp;as_allsubj=all&amp;hl=en">Google Scholar</a></ul><li id=auth-8><h3 class="sans-serif strong text-gray-light js-search-name">Search for J Christopher Love in:</h3><ul class="text13 clean-list inline-list strong small-space-below"><li><a href="/search/executeSearch?sp-q=%22J%20Christopher+Love%22&amp;sp-p=all&amp;pag-start=1&amp;sp-c=25&amp;sp-m=1&amp;sp-s=date_descending">Nature Research journals</a> <span class=bullet>&bull;</span> <li><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=search&amp;term=J%20Christopher+Love">PubMed</a> <span class=bullet>&bull;</span> <li><a href="http://scholar.google.co.uk/scholar?as_q=&amp;num=10&amp;btnG=Search+Scholar&amp;as_epq=&amp;as_oq=&amp;as_eq=&amp;as_occt=any&amp;as_sauthors=%22J%20Christopher+Love%22&amp;as_publication=&amp;as_ylo=&amp;as_yhi=&amp;as_allsubj=all&amp;hl=en">Google Scholar</a></ul><li id=auth-9><h3 class="sans-serif strong text-gray-light js-search-name">Search for Alex K Shalek in:</h3><ul class="text13 clean-list inline-list strong small-space-below"><li><a href="/search/executeSearch?sp-q=%22Alex%20K+Shalek%22&amp;sp-p=all&amp;pag-start=1&amp;sp-c=25&amp;sp-m=1&amp;sp-s=date_descending">Nature Research journals</a> <span class=bullet>&bull;</span> <li><a href="http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=search&amp;term=Alex%20K+Shalek">PubMed</a> <span class=bullet>&bull;</span> <li><a href="http://scholar.google.co.uk/scholar?as_q=&amp;num=10&amp;btnG=Search+Scholar&amp;as_epq=&amp;as_oq=&amp;as_eq=&amp;as_occt=any&amp;as_sauthors=%22Alex%20K+Shalek%22&amp;as_publication=&amp;as_ylo=&amp;as_yhi=&amp;as_allsubj=all&amp;hl=en">Google Scholar</a></ul></ol></div><h3 class="h3 strong mb4" id=contributions>Contributions</h3><p>T.M.G., M.H.W. II, T.K.H., J.C.L. and A.K.S. developed the concepts and designed the study. T.M.G., M.H.W. II, T.K.H. and B.D.B. performed the experiments. T.M.G., M.H.W., T.K.H., A.B. and R.S. performed bioinformatic analysis. S.F. helped design and interpret the <i>M. tuberculosis</i> experiments. All authors analyzed and interpreted the data. T.M.G., M.H.W. II, T.K.H., J.C.L. and A.K.S. wrote the manuscript with feedback from all authors.</p><h3 class="h3 strong mb4" id=competing-interests>Competing interests</h3><p>T.M.G., M.H.W. II, T.K.H., J.C.L., A.K.S., and the Broad Institute and the Massachusetts Institute of Technology have filed a patent application (patent no. PCT/US17/13791) that relates to Seq-Well, compositions of matter, the outlined experimental and computational methods and uses thereof.</p><h2 class="h3 strong mb4" id=corresponding-author>Corresponding authors</h2><p>Correspondence to <a href=/articles/nmeth.4179/email/correspondent/c2/new id=corresp-c2>J Christopher Love</a> or <a href=/articles/nmeth.4179/email/correspondent/c1/new id=corresp-c1>Alex K Shalek</a>.</p></div></div></section><section aria-labelledby=integrated-supplementary-information><div class="serif article-section js-article-section cleared clear" id=integrated-supplementary-information-section><h2 class="js-section-title section-title position-relative strong tighten-line-height background-gray-light pt20 pb6 pl0 pr20 standard-space-below mq640-pt20 mq640-pb10 mq640-pl20 mq640-mt0 extend-left small-space-above" id=integrated-supplementary-information>Integrated supplementary information</h2><div class="pl20 mq875-pl0 js-collapsible-section" id=integrated-supplementary-information-content><div class="cleared standard-space-below" data-container-section=extended-data data-component=extended-data><div class="cleared standard-space-below"><h2 class="h3 strong tiny-space-below block icon icon-left pl30 ml20 icon-figure-16x16 ">Supplementary figures</h2><ol class="clean-list indented-list ma0 border-gray-medium border-bottom-1"><li class="cleared position-relative standard-space-below small-space-below" id=f4><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">1.</span><h3 class=text17><a href=/articles/nmeth.4179/figures/4 data-track=click data-track-source=item-title data-track-dest="link:figure, Open Array Gene and Transcript Capture">Open Array Gene and Transcript Capture</a></h3><li class="cleared position-relative standard-space-below small-space-below" id=f5><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">2.</span><h3 class=text17><a href=/articles/nmeth.4179/figures/5 data-track=click data-track-source=item-title data-track-dest="link:figure, Seq-Well Experimental Workflow (see Seq-Well Protocol – Ref. 21)">Seq-Well Experimental Workflow (see Seq-Well Protocol – Ref. 21)</a></h3><li class="cleared position-relative standard-space-below small-space-below" id=f6><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">3.</span><h3 class=text17><a href=/articles/nmeth.4179/figures/6 data-track=click data-track-source=item-title data-track-dest="link:figure, Bead And Cell Loading Efficiency">Bead And Cell Loading Efficiency</a></h3><li class="cleared position-relative standard-space-below small-space-below" id=f7><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">4.</span><h3 class=text17><a href=/articles/nmeth.4179/figures/7 data-track=click data-track-source=item-title data-track-dest="link:figure, PDMS Surface Chemistry Functionalization Protocol and Differential Functionalization of Microwell Arrays">PDMS Surface Chemistry Functionalization Protocol and Differential Functionalization of Microwell Arrays</a></h3><li class="cleared position-relative standard-space-below small-space-below" id=f8><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">5.</span><h3 class=text17><a href=/articles/nmeth.4179/figures/8 data-track=click data-track-source=item-title data-track-dest="link:figure, Microwell Sealing With Semipermeable Membrane">Microwell Sealing With Semipermeable Membrane</a></h3><li class="cleared position-relative standard-space-below small-space-below" id=f9><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">6.</span><h3 class=text17><a href=/articles/nmeth.4179/figures/9 data-track=click data-track-source=item-title data-track-dest="link:figure, Read Mapping Quality">Read Mapping Quality</a></h3><li class="cleared position-relative standard-space-below small-space-below" id=f10><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">7.</span><h3 class=text17><a href=/articles/nmeth.4179/figures/10 data-track=click data-track-source=item-title data-track-dest="link:figure, Comparison of Gene and Transcript Capture and Percent Contamination Among Massively-Parallel scRNA-Seq Methods Using Mouse and Human Cell Lines">Comparison of Gene and Transcript Capture and Percent Contamination Among Massively-Parallel scRNA-Seq Methods Using Mouse and Human Cell Lines</a></h3><li class="cleared position-relative standard-space-below small-space-below" id=f11><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">8.</span><h3 class=text17><a href=/articles/nmeth.4179/figures/11 data-track=click data-track-source=item-title data-track-dest="link:figure, Transcript Cutoff For Species-Mixing Validation">Transcript Cutoff For Species-Mixing Validation</a></h3><li class="cleared position-relative standard-space-below small-space-below" id=f12><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">9.</span><h3 class=text17><a href=/articles/nmeth.4179/figures/12 data-track=click data-track-source=item-title data-track-dest="link:figure, Comparison Of In-Silico HEK293 Populations With Bulk Populations">Comparison Of In-Silico HEK293 Populations With Bulk Populations</a></h3><li class="cleared position-relative standard-space-below small-space-below" id=f13><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">10.</span><h3 class=text17><a href=/articles/nmeth.4179/figures/13 data-track=click data-track-source=item-title data-track-dest="link:figure, Mapping Lineage Defining Transcripts To PBMC Clusters">Mapping Lineage Defining Transcripts To PBMC Clusters</a></h3><li class="cleared position-relative standard-space-below small-space-below" id=f14><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">11.</span><h3 class=text17><a href=/articles/nmeth.4179/figures/14 data-track=click data-track-source=item-title data-track-dest="link:figure, Heatmap Of PBMCs">Heatmap Of PBMCs</a></h3><li class="cleared position-relative standard-space-below small-space-below" id=f15><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">12.</span><h3 class=text17><a href=/articles/nmeth.4179/figures/15 data-track=click data-track-source=item-title data-track-dest="link:figure, Read Mapping Quality In PBMCs">Read Mapping Quality In PBMCs</a></h3><li class="cleared position-relative standard-space-below small-space-below" id=f16><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">13.</span><h3 class=text17><a href=/articles/nmeth.4179/figures/16 data-track=click data-track-source=item-title data-track-dest="link:figure, Comparison Of Human PBMC Gene And Transcript Capture With Other Massively-Parallel scRNA-Seq Methods">Comparison Of Human PBMC Gene And Transcript Capture With Other Massively-Parallel scRNA-Seq Methods</a></h3><li class="cleared position-relative standard-space-below small-space-below" id=f17><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">14.</span><h3 class=text17><a href=/articles/nmeth.4179/figures/17 data-track=click data-track-source=item-title data-track-dest="link:figure, T-SNE Visualization Of Exposed And Unexposed Macrophages Using A 5,000 Transcript Cutoff">T-SNE Visualization Of Exposed And Unexposed Macrophages Using A 5,000 Transcript Cutoff</a></h3><li class="cleared position-relative standard-space-below" id=f18><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">15.</span><h3 class=text17><a href=/articles/nmeth.4179/figures/18 data-track=click data-track-source=item-title data-track-dest="link:figure, Quality By Cluster Among TB Macrophages">Quality By Cluster Among TB Macrophages</a></h3></ol></div></div></div></div></section><section aria-labelledby=supplementary-information><div class="serif article-section js-article-section cleared clear" id=supplementary-information-section><h2 class="js-section-title section-title position-relative strong tighten-line-height background-gray-light pt20 pb6 pl0 pr20 standard-space-below mq640-pt20 mq640-pb10 mq640-pl20 mq640-mt0 extend-left small-space-above" id=supplementary-information>Supplementary information</h2><div class="pl20 mq875-pl0 js-collapsible-section" id=supplementary-information-content><div class="cleared standard-space-below" data-container-section=supplementary-information data-component=supplementary-information><h2 class="h3 strong tiny-space-below block icon icon-left pl30 ml20 icon-doctype-pdf-16x16-color">PDF files</h2><ol class="clean-list indented-list ma0 border-gray-medium border-bottom-1"><li class="cleared position-relative standard-space-below small-space-below" id=s1><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">1.</span><h3 class=text17><a href=https://media.nature.com/original/nature-assets/nmeth/journal/v14/n4/extref/nmeth.4179-S1.pdf data-track=click data-track-source=item-title data-track-dest="link:PDF files, Supplementary Text and Figures">Supplementary Text and Figures</a></h3><div class=cleared data-component=thumbnail-container><p class="text14 ma0">Supplementary Figures 1–15 and Supplementary Tables 1–2</p></div><li class="cleared position-relative standard-space-below" id=s2><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">2.</span><h3 class=text17><a href=https://media.nature.com/original/nature-assets/nmeth/journal/v14/n4/extref/nmeth.4179-S10.pdf data-track=click data-track-source=item-title data-track-dest="link:PDF files, Supplementary Protocol">Supplementary Protocol</a></h3><div class=cleared data-component=thumbnail-container><p class="text14 ma0">Seq-Well protocol</p></div></ol><h2 class="h3 strong tiny-space-below block icon icon-left pl30 ml20 icon-doctype-zip-16x16-color standard-space-above">Zip files</h2><ol class="clean-list indented-list ma0 border-gray-medium border-bottom-1"><li class="cleared position-relative standard-space-below small-space-below" id=s3><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">1.</span><h3 class=text17><a href=https://media.nature.com/original/nature-assets/nmeth/journal/v14/n4/extref/nmeth.4179-S2.zip data-track=click data-track-source=item-title data-track-dest="link:Zip files, Supplementary Table 3">Supplementary Table 3</a></h3><div class=cleared data-component=thumbnail-container><p class="text14 ma0">Gene Expression Matrix for PBMCs</p></div><li class="cleared position-relative standard-space-below" id=s5><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">2.</span><h3 class=text17><a href=https://media.nature.com/original/nature-assets/nmeth/journal/v14/n4/extref/nmeth.4179-S4.zip data-track=click data-track-source=item-title data-track-dest="link:Zip files, Supplementary Table 5">Supplementary Table 5</a></h3><div class=cleared data-component=thumbnail-container><p class="text14 ma0">Gene Expression Matrix for Mtb-Exposed Monocyte-Derived Macrophages and Unexposed Control Cells</p></div></ol><h2 class="h3 strong tiny-space-below block icon icon-left pl30 ml20 icon-doctype-xlsx-16x16-color standard-space-above">Excel files</h2><ol class="clean-list indented-list ma0 border-gray-medium border-bottom-1"><li class="cleared position-relative standard-space-below small-space-below" id=s4><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">1.</span><h3 class=text17><a href=https://media.nature.com/original/nature-assets/nmeth/journal/v14/n4/extref/nmeth.4179-S3.xlsx data-track=click data-track-source=item-title data-track-dest="link:Excel files, Supplementary Table 4">Supplementary Table 4</a></h3><div class=cleared data-component=thumbnail-container><p class="text14 ma0">PBMC Cluster Enrichments</p></div><li class="cleared position-relative standard-space-below small-space-below" id=s6><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">2.</span><h3 class=text17><a href=https://media.nature.com/original/nature-assets/nmeth/journal/v14/n4/extref/nmeth.4179-S5.xlsx data-track=click data-track-source=item-title data-track-dest="link:Excel files, Supplementary Table 6">Supplementary Table 6</a></h3><div class=cleared data-component=thumbnail-container><p class="text14 ma0">TB Cluster Enrichments</p></div><li class="cleared position-relative standard-space-below small-space-below" id=s7><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">3.</span><h3 class=text17><a href=https://media.nature.com/original/nature-assets/nmeth/journal/v14/n4/extref/nmeth.4179-S6.xlsx data-track=click data-track-source=item-title data-track-dest="link:Excel files, Supplementary Table 7">Supplementary Table 7</a></h3><div class=cleared data-component=thumbnail-container><p class="text14 ma0">Cluster Enrichments between Exposure Groups</p></div><li class="cleared position-relative standard-space-below small-space-below" id=s8><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">4.</span><h3 class=text17><a href=https://media.nature.com/original/nature-assets/nmeth/journal/v14/n4/extref/nmeth.4179-S7.xlsx data-track=click data-track-source=item-title data-track-dest="link:Excel files, Supplementary Table 8">Supplementary Table 8</a></h3><div class=cleared data-component=thumbnail-container><p class="text14 ma0">Differentially Expressed Genes between TB Exposed and
+Unexposed Cells within Each Cluster</p></div><li class="cleared position-relative standard-space-below small-space-below" id=s9><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">5.</span><h3 class=text17><a href=https://media.nature.com/original/nature-assets/nmeth/journal/v14/n4/extref/nmeth.4179-S8.xlsx data-track=click data-track-source=item-title data-track-dest="link:Excel files, Supplementary Table 9">Supplementary Table 9</a></h3><div class=cleared data-component=thumbnail-container><p class="text14 ma0">TB Infection by Cluster Enrichments</p></div><li class="cleared position-relative standard-space-below" id=s10><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">6.</span><h3 class=text17><a href=https://media.nature.com/original/nature-assets/nmeth/journal/v14/n4/extref/nmeth.4179-S9.xlsx data-track=click data-track-source=item-title data-track-dest="link:Excel files, Supplementary Table 10">Supplementary Table 10</a></h3><div class=cleared data-component=thumbnail-container><p class="text14 ma0">GSEA Comparisons of Exposed and Unexposed Cells within Each Cluster</p></div></ol><h2 class="h3 strong tiny-space-below block icon icon-left pl30 ml20 icon-doctype-mp4-16x16-color standard-space-above">Videos</h2><ol class="clean-list indented-list ma0"><li class="cleared position-relative standard-space-below small-space-below" id=s11 data-component=brightcove-supplementary-video data-video-player=brightcove data-video-id=5317570476001 data-video-url=/articles/nmeth.4179/videos/1><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">1.</span><h3 class=text17><a href=https://media.nature.com/original/nature-assets/nmeth/journal/v14/n4/extref/nmeth.4179-sv1.mp4 data-track=click data-track-source=item-title data-track-dest="link:Full Size, Bead Loading ">Bead Loading </a></h3><div class=cleared data-component=thumbnail-container><p class="text14 ma0">Video demonstration of bead loading on microwells arrays.</p></div><li class="cleared position-relative standard-space-below" id=s12 data-component=brightcove-supplementary-video data-video-player=brightcove data-video-id=5281196819001 data-video-url=/articles/nmeth.4179/videos/1><span class="indented-counter serif h2 tighten-line-height text-right position-absolute">2.</span><h3 class=text17><a href=https://media.nature.com/original/nature-assets/nmeth/journal/v14/n4/extref/nmeth.4179-sv2.mp4 data-track=click data-track-source=item-title data-track-dest="link:Full Size, Membrane Attachment ">Membrane Attachment </a></h3><div class=cleared data-component=thumbnail-container><p class="text14 ma0">Membrane Attachment</p></div></ol></div></div></div></section>
+                        <span data-recommended="jobs"></span>
+                        
+
+                        
+                    </div>
+                </div>
+
+                <div class="hide-print reading-companion js-reading-companion position-relative cleared pin-left"
+                     role="complementary">
+                    <div data-container-type="reading-companion">
+                        
+                            <h2 class="h3 sans-serif strong visually-hidden">Article Tools</h2><div class="tighten-line-height cleared text14 position-relative z-index-1 standard-space-below pb20 border-gray-light border-bottom-1" data-article-tools data-container-section=tools><ul class="clean-list ie11-list-hack ma0 flex-box flex-space-between mq875-kill-flex-space-between"><li class="pin-left mr4 mq875-hide position-relative z-index-2"><a href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.nature.com%2Farticles%2Fnmeth.4179&amp;t=Seq-Well%3A+portable%2C+low-cost+RNA+sequencing+of+single+cells+at+high+throughput" class="inline-block block-link pa10 pl0" data-track=click data-track-source=share-on-facebook data-track-dest=link:facebook><span class="inline-block icon icon-left icon-facebook-16x16-color pl20">Share<span class=visually-hidden> on Facebook</span></span></a><li class="pin-left mr4 mq875-hide position-relative z-index-2"><a href="http://twitter.com/home/?status=Seq-Well%3A+portable%2C+low-cost+RNA+sequencing+of+single+cells+at+high+throughput+http%3A%2F%2Fwww.nature.com%2Farticles%2Fnmeth.4179" class="inline-block block-link pa10 pl0" data-track=click data-track-source=share-on-twitter data-track-dest=link:twitter><span class="inline-block icon icon-left icon-twitter-16x16-color pl20">Share<span class=visually-hidden> on Twitter</span></span></a><li class="pin-left position-relative"><a href=#tools class="inline-block block-link pa10 background-white position-relative z-index-50" data-tools-link data-track=click data-track-source=more-tools data-track-dest=link:more data-track-dl=51><span class="inline-block position-relative icon icon-right pr20 icon-arrow-down-12x7-blue icon-rotate">Tools</span></a></ul></div><div id=tools class="js-hide standard-space-below tools-shadow tools-popup"><div class="cleared border-gray-medium border-all-1 background-white pa20"><h3 class="text13 text-gray-light strong upper sans-serif small-space-below">Tools</h3><ul class="clean-list ie11-list-hack text13 standard-space-below tighten-line-height"><li class=small-space-below><a href="https://s100.copyright.com/AppDispatchServlet?author=Todd%20M%20Gierahn%2C%20Marc%20H%20Wadsworth%20II%2C%20Travis%20K%20Hughes%2C%20Bryan%20D%20Bryson%2C%20Andrew%20Butler%20et%20al.&amp;contentID=10.1038%2Fnmeth.4179&amp;imprint=Nature&amp;issueNum=4&amp;orderBeanReset=true&amp;publication=Nature%20Methods&amp;publicationDate=2017-02-13&amp;publisherName=SpringerNature&amp;title=Seq-Well%3A%20portable%2C%20low-cost%20RNA%20sequencing%20of%20single%20cells%20at%20high%20throughput&amp;volumeNum=14" class="inline-block icon icon-left icon-tools-rights-16x16-blue pl20" data-track=click data-track-source=rights data-track-dest="link:Rights &amp; permissions">Rights &amp; permissions</a><li class="hide js-show small-space-below"><a href=javascript:window.print(); class="inline-block icon icon-left icon-tools-print-16x16-blue pl20" data-track=click data-track-source=print data-track-dest=link:Print data-track-dl=51>Print</a></ul><h3 class="text13 text-gray-light strong upper sans-serif small-space-below clear">Share</h3><ul class="clean-list ie11-list-hack text13 small-space-below tighten-line-height"><li class="pin-left grid-1of2 small-space-below hide mq875-show header-tools-show"><a href="http://twitter.com/home/?status=Seq-Well%3A+portable%2C+low-cost+RNA+sequencing+of+single+cells+at+high+throughput+http%3A%2F%2Fwww.nature.com%2Farticles%2Fnmeth.4179" data-track=click data-track-source=share-on-twitter data-track-dest=link:twitter class="inline-block icon icon-left icon-twitter-16x16-color pl20">Twitter</a><li class="pin-left grid-1of2 small-space-below hide mq875-show header-tools-show"><a href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Fwww.nature.com%2Farticles%2Fnmeth.4179&amp;t=Seq-Well%3A+portable%2C+low-cost+RNA+sequencing+of+single+cells+at+high+throughput" data-track=click data-track-source=share-on-facebook data-track-dest=link:facebook class="inline-block icon icon-left icon-facebook-16x16-color pl20">Facebook</a><li class="pin-left grid-1of2 small-space-below"><a href="http://digg.com/submit?phase=2&amp;url=http%3A%2F%2Fwww.nature.com%2Farticles%2Fnmeth.4179&amp;title=Seq-Well%3A+portable%2C+low-cost+RNA+sequencing+of+single+cells+at+high+throughput" data-track=click data-track-source=share-on-digg data-track-dest=link:digg class="inline-block icon icon-left icon-digg-16x16-color pl20">Digg</a><li class="pin-left grid-1of2 small-space-below"><a href="https://plus.google.com/share?hl=en&amp;url=http%3A%2F%2Fwww.nature.com%2Farticles%2Fnmeth.4179&amp;title=Seq-Well%3A+portable%2C+low-cost+RNA+sequencing+of+single+cells+at+high+throughput" data-track=click data-track-source=share-on-googleplus data-track-dest=link:googleplus class="inline-block icon icon-left icon-googleplus-16x16-color pl20">Google+</a><li class="pin-left grid-1of2 small-space-below"><a href="http://www.linkedin.com/cws/share?url=http%3A%2F%2Fwww.nature.com%2Farticles%2Fnmeth.4179&amp;title=Seq-Well%3A+portable%2C+low-cost+RNA+sequencing+of+single+cells+at+high+throughput" data-track=click data-track-source=share-on-linkedin data-track-dest=link:linkedin class="inline-block icon icon-left icon-linkedin-16x16-color pl20">LinkedIn</a><li class="pin-left grid-1of2 small-space-below"><a href=http://www.reddit.com/s/http%3A%2F%2Fwww.nature.com%2Farticles%2Fnmeth.4179 data-track=click data-track-source=share-on-reddit data-track-dest=link:reddit class="inline-block icon icon-left icon-reddit-16x16-color pl20">Reddit</a><li class="pin-left grid-1of2 small-space-below"><a href="http://www.stumbleupon.com/submit?url=http%3A%2F%2Fwww.nature.com%2Farticles%2Fnmeth.4179&amp;title=Seq-Well%3A+portable%2C+low-cost+RNA+sequencing+of+single+cells+at+high+throughput" data-track=click data-track-source=share-on-stumbleupon data-track-dest=link:stumbleupon class="inline-block icon icon-left icon-stumbleupon-16x16-color pl20">StumbleUpon</a><li class="pin-left grid-1of2 small-space-below"><a href="http://www.citeulike.org/posturl2?username=&amp;url=http%3A%2F%2Fwww.nature.com%2Farticles%2Fnmeth.4179&amp;title=Seq-Well%3A+portable%2C+low-cost+RNA+sequencing+of+single+cells+at+high+throughput&amp;rewrite=yes" data-track=click data-track-source=share-on-citeulike data-track-dest=link:citeulike class="inline-block icon icon-left icon-citeulike-16x16-color pl20">CiteULike</a></ul></div></div>
+                        
+
+                        
+                        
+                        
+                        
+                        <div class="clear cleared" data-component="reading-companion-placeholder">
+                            <div class="animate-width" data-component="reading-companion-sticky">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-4 mq875-grid-12 pb30 last">
+                    
+    <div id="div-gpt-ad-right-2"
+         class="div-gpt-ad advert medium-rectangle js-ad text-center hide-print grade-c-hide hide-overflow"
+         data-gpt-unitpath="/285/nmeth.nature.com/article"
+         data-gpt-sizes="300x250"
+         data-gpt-targeting="template=mosaic;pos=right;abr=!webtv;tile=2;artid=nmeth.4179;techmeta=13,14,31,38,45,47,62,63,91;subjmeta=1647,1949,199,208,250,514,631">
+        <noscript>
+            <a href="//pubads.g.doubleclick.net/gampad/jump?iu=/285/nmeth.nature.com/article&amp;sz=300x250&amp;tile=2&amp;c=-709180135&amp;t=template%3Dmosaic%26pos%3Dright%26abr%3D%21webtv%26tile%3D2%26artid%3Dnmeth.4179%26techmeta%3D13,14,31,38,45,47,62,63,91%26subjmeta=%3D1647,1949,199,208,250,514,631">
+                <img data-test="gpt-advert-fallback-img"
+                     src="//pubads.g.doubleclick.net/gampad/ad?iu=/285/nmeth.nature.com/article&amp;sz=300x250&amp;tile=2&amp;c=-709180135&amp;t=template%3Dmosaic%26pos%3Dright%26abr%3D%21webtv%26tile%3D2%26artid%3Dnmeth.4179%26techmeta%3D13,14,31,38,45,47,62,63,91%26subjmeta=%3D1647,1949,199,208,250,514,631"
+                     alt="Advertisement"
+                     width="300"
+                     height="250"></a>
+        </noscript>
+    </div>
+
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+
+<div class="js-header-menu menu mb20 z-index-50 composite-layer background-gray-light animate-opacity-top tighten-line-height" id="menu">
+    <div class="menu-inner js-hide">
+        <nav>
+            <h3 class="visually-hidden">Menu</h3>
+            <div class="nav-border">
+                <div class="background-gradient-brand-secondary-tertiary">
+                    <div class="content table grid-12 box-sizing pl20 menu-row">
+                        <div class="table-row" data-test="menu-row-branded">
+                            <div class="background-brand-secondary grid-1of5 table-cell v-middle menu-cell mq875-hide">
+                                <h2 class="h3 pt20 pb20 pr20 mt6 mb6">
+                                    <a href="/nmeth" data-track="click" data-track-source="menu-group" data-track-dest="link:Nature Methods">Nature Methods</a>
+                                </h2>
+                            </div>
+                            
+    <div class="background-brand-tertiary grid-4of5 table-cell v-middle menu-cell mq875-grid-12 mq875-block">
+        <ul class="cleared clean-list horizontal-list text13 ma20">
+            
+                <li class="pr30">
+                    <a href="/nmeth/current-issue" data-track="click" data-track-source="menu-item"
+                       data-track-dest="link:Current Issue">Current Issue</a>
+                </li>
+            
+                <li class="pr30">
+                    <a href="/nmeth/browse-issues" data-track="click" data-track-source="menu-item"
+                       data-track-dest="link:Browse Issues">Browse Issues</a>
+                </li>
+            
+                <li class="pr30">
+                    <a href="/nmeth/news-and-comment" data-track="click" data-track-source="menu-item"
+                       data-track-dest="link:News &amp; Comment">News &amp; Comment</a>
+                </li>
+            
+                <li class="pr30">
+                    <a href="/nmeth/research" data-track="click" data-track-source="menu-item"
+                       data-track-dest="link:Research">Research</a>
+                </li>
+            
+                <li class="pr30">
+                    <a href="/nmeth/articles" data-track="click" data-track-source="menu-item"
+                       data-track-dest="link:Browse Articles">Browse Articles</a>
+                </li>
+            
+                <li class="pr30">
+                    <a href="/nmeth/focsup-index" data-track="click" data-track-source="menu-item"
+                       data-track-dest="link:Specials, Focuses &amp; Supplements">Specials, Focuses &amp; Supplements</a>
+                </li>
+            
+                <li class="pr30">
+                    <a href="/nmeth/multimedia" data-track="click" data-track-source="menu-item"
+                       data-track-dest="link:Multimedia">Multimedia</a>
+                </li>
+            
+                <li class="pr30">
+                    <a href="/nmeth/about" data-track="click" data-track-source="menu-item"
+                       data-track-dest="link:About the Journal">About the Journal</a>
+                </li>
+            
+                <li class="pr30">
+                    <a href="/nmeth/for-authors" data-track="click" data-track-source="menu-item"
+                       data-track-dest="link:For Authors">For Authors</a>
+                </li>
+            
+                <li class="pr30">
+                    <a href="/nmeth/for-referees" data-track="click" data-track-source="menu-item"
+                       data-track-dest="link:For Referees">For Referees</a>
+                </li>
+            
+                <li class="pr30">
+                    <a href="/nmeth/web-feeds" data-track="click" data-track-source="menu-item"
+                       data-track-dest="link:Web Feeds">Web Feeds</a>
+                </li>
+            
+        </ul>
+    </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="background-gradient-brand-gray">
+                    <div class="content table grid-12 box-sizing pl20 menu-row">
+                        <div class="table-row" data-test="menu-row">
+                            <div class="background-gray-medium grid-1of5 table-cell v-middle menu-cell mq875-grid-12 mq875-block">
+                                <h2 class="h3 pt20 pb20 pr20 mt6 mb6">
+                                    <a href="/siteindex" class="js-mq875-hide" data-track="click" data-track-source="menu-group" data-track-dest="link:Journals A-Z">Journals A-Z</a>
+                                        <a class="js-accordion-toggle hide js-mq875-show-inline">Journals A-Z<span class="position-relative icon icon-right icon-arrow-down-12x7-gray icon-rotate pr20"></span></a>
+                                </h2>
+                            </div>
+                            <div class="background-gray-light grid-4of5 table-cell v-middle menu-cell js-mq875-hide mq875-grid-12 mq875-block">
+                                <ul class="cleared clean-list horizontal-list text13 ma20">
+                                    <li class="pr30">
+                                        <a href="/nature" data-track="click" data-track-source="menu-item" data-track-dest="link:Nature">Nature</a>
+                                    </li>
+                                    <li class="pr30">
+                                        <a href="/ncomms" data-track="click" data-track-source="menu-item" data-track-dest="link:Nature Communications">Nature Communications</a>
+                                    </li>
+                                    <li class="pr30">
+                                        <a href="/nprot" data-track="click" data-track-source="menu-item" data-track-dest="link:Nature Protocols">Nature Protocols</a>
+                                    </li>
+                                    <li class="pr30">
+                                        <a href="/reviews" data-track="click" data-track-source="menu-item" data-track-dest="link:Review journals">Review journals</a>
+                                    </li>
+                                    <li class="pr30">
+                                        <a href="/srep" data-track="click" data-track-source="menu-item" data-track-dest="link:Scientific Reports">Scientific Reports</a>
+                                    </li>
+                                    <li class="pr30">
+                                        <a href="/siteindex" class="right-arrow strong" data-track="click" data-track-source="view-all" data-track-dest="link:Journals A-Z">View all</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="background-gradient-brand-gray">
+                    <div class="content table grid-12 box-sizing pl20 menu-row">
+                        <div class="table-row" data-test="menu-row">
+                            <div class="background-gray-medium grid-1of5 table-cell v-middle menu-cell mq875-grid-12 mq875-block">
+                                <h2 class="h3 pt20 pb20 pr20 mt6 mb6">
+                                    <a href="/subjects" class="js-mq875-hide" data-track="click" data-track-source="menu-group" data-track-dest="link:All Subjects">All Subjects</a>
+                                    <a class="js-accordion-toggle hide js-mq875-show-inline">All Subjects<span class="position-relative icon icon-right icon-arrow-down-12x7-gray icon-rotate pr20"></span></a>
+                                </h2>
+                            </div>
+                            <div class="background-gray-light grid-4of5 table-cell v-middle menu-cell js-mq875-hide mq875-grid-12 mq875-block">
+                                <ul class="cleared clean-list horizontal-list text13 ma20">
+                                    <li class="pr30">
+                                        <a href="/subjects/biological-sciences" data-track="click" data-track-source="menu-item" data-track-dest="link:Biological Sciences">Biological Sciences</a>
+                                    </li>
+                                    <li class="pr30">
+                                            <a href="/subjects/earth-and-environmental-sciences" data-track="click" data-track-source="menu-item" data-track-dest="link:Earth &amp; Environmental Sciences">Earth &amp; Environmental Sciences</a>
+                                    </li>
+                                    <li class="pr30">
+                                        <a href="/subjects/health-sciences" data-track="click" data-track-source="menu-item" data-track-dest="link:Health Sciences">Health Sciences</a>
+                                    </li>
+                                    <li class="pr30">
+                                        <a href="/subjects/physical-sciences" data-track="click" data-track-source="menu-item" data-track-dest="link:Physical Sciences">Physical Sciences</a>
+                                    </li>
+                                    <li class="pr30">
+                                            <a href="/subjects/scientific-community-and-society" data-track="click" data-track-source="menu-item" data-track-dest="link:Scientific Community &amp; Society">Scientific Community &amp; Society</a>
+                                    </li>
+                                    <li class="pr30">
+                                        <a href="/subjects" class="right-arrow strong" data-track="click" data-track-source="view-all" data-track-dest="link:All Subjects">View all</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="background-gradient-brand-gray">
+                    <div class="content table grid-12 box-sizing pl20 menu-row">
+                        <div class="table-row" data-test="menu-row">
+                            <div class="background-gray-medium grid-1of5 table-cell v-middle menu-cell mq875-grid-12 mq875-block">
+                                <h2 class="h3 pt20 pb20 pr20 mt6 mb6">
+                                    <a href="/" class="js-mq875-hide" data-track="click" data-track-source="menu-group" data-track-dest="link:nature.com">nature.com</a>
+                                    <a class="js-accordion-toggle hide js-mq875-show-inline">nature.com<span class="position-relative icon icon-right icon-arrow-down-12x7-gray icon-rotate pr20"></span></a>
+                                </h2>
+                            </div>
+                            <div class="background-gray-light grid-4of5 table-cell v-middle menu-cell js-mq875-hide mq875-grid-12 mq875-block">
+                                <ul class="cleared clean-list horizontal-list text13 ma20">
+                                    <li class="pr30">
+                                            <a href="/subscriptions/index.html" data-track="click" data-track-source="menu-item" data-track-dest="link:Subscriptions">Subscriptions</a>
+                                    </li>
+                                    <li class="pr30">
+                                           <a href="/authors/index.html" data-track="click" data-track-source="menu-item" data-track-dest="link:Authors &amp; Referees">Authors &amp; Referees</a>
+                                    </li>
+                                    <li class="pr30">
+                                            <a href="/libraries/index.html" data-track="click" data-track-source="menu-item" data-track-dest="link:Librarians">Librarians</a>
+                                    </li>
+                                    <li class="pr30">
+                                            <a href="/advertising/index.html" data-track="click" data-track-source="menu-item" data-track-dest="link:Advertisers">Advertisers</a>
+                                    </li>
+                                    <li class="pr30">
+                                            <a href="/npg_/press_room/index.html" data-track="click" data-track-source="menu-item" data-track-dest="link:Press">Press</a>
+                                    </li>
+                                    <li class="pr30">
+                                            <a href="/npg_/index_npg.html" data-track="click" data-track-source="menu-item" data-track-dest="link:About">About</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<div id="search-menu" class="menu pt20 mb20 z-index-50 composite-layer background-white animate-opacity-top" data-component="tray">
+    <div class="menu-inner js-hide">
+        <section>
+            <h2 class="visually-hidden">Search</h2>
+            <div class="hide-print content mb40 mq1200-padded position-relative" data-test="inline-search">
+                <div class="pb30 pt30 cleared background-white">
+                    <div class="grid grid-8 grid-left-2 mq875-grid-12 mq875-ml0 mq640-pb30">
+                        <form action="/search" method="get" role="search" autocomplete="off" class="mq875-pr20 mq875-pl20" data-track="submit" data-track-action="search-header" data-track-label="search-header" data-track-source="search-submit" data-track-dest-fields="q">
+                            <div class="position-relative">
+                                <div class="background-gray-medium cleared">
+                                    <div class="search-input-box background-white cleared">
+                                        <div class="search-input-layout pin-left grid-12">
+                                            <div class="search-input-field pr4 serif">
+                                                <label for="keywords" class="visually-hidden">Search Nature.com</label>
+                                                <input type="search" id="keywords" class="serif" name="q" value="" placeholder="Search Nature.com" data-test="search-keywords" />
+                                            </div>
+                                        </div>
+                                        <span class="search-input-suffix inline-block text13 equalize-line-height text-right">
+                                            <span class="search-input-suffix-inner block">
+                                                <a href="/search/advanced" data-test="search-suffix-link" class="color-blue" data-track="click" data-track-source="search-menu" data-track-dest="link:/search/advanced" data-track-dl="1">advanced</a>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="position-absolute search-input-btn">
+                                    <button type="submit" class="icon icon-center search-btn" data-test="search-submit">
+                                        Search
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+
+<footer>
+    <div class="content mq1200-padded mt70 mb30 cleared" itemscope itemtype="http://schema.org/Periodical">
+        <meta itemprop="publisher" content="Springer Nature">
+        <div class="grid grid-12 last clear-float cleared mb15 text-gray-light text13 flex-box flex-wrap-reverse">
+            <h2 aria-level="2" class="text13 strong emphasis ma0 sans-serif" itemprop="name">Nature Methods</h2>
+            <p class="pt0 pr10 pb0 pl10 ma0"><abbr title="International Standard Serial Number">ISSN</abbr> <span itemprop="issn">1548-7105</span> (online)</p>
+            
+        </div>
+
+        <hr class="separator mb30">
+
+        <div class="grid grid-12 last">
+    <h2 aria-level="2" class="hide">nature.com sitemap</h2>
+
+    <div class="cleared z-index-1 text13 hide-print">
+        <div class="grid grid-3 mq875-grid-4 mq640-grid-6 mq480-grid-12 mb20">
+            <h3 class="h4">For authors and referees</h3>
+            <ul class="clean-list ma0 mt10 mb6">
+                <li class="pb4"><a href="https://www.nature.com/authors/index.html" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Guide to Authors">Guide to Authors</a></li>
+                <li class="pb4"><a href="https://www.nature.com/authors/peer_review/" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Guide to Referees">Guide to Referees</a></li>
+                <li class="pb4"><a href="https://www.nature.com/authors/editorial_policies/" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Editorial policies">Editorial policies</a></li>
+                <li class="pb4"><a href="https://authorservices.springernature.com/language-editing/?utm_source=natureAuthors&amp;utm_medium=referral&amp;utm_campaign=natureAuthors"
+                       data-track="click" data-track-source="sitemap-item" data-track-dest="link:Language editing">Language editing</a></li>
+                <li class="pb4"><a href="https://authorservices.springernature.com/scientific-editing/?utm_source=natureAuthors&amp;utm_medium=referral&amp;utm_campaign=natureAuthors"
+                       data-track="click" data-track-source="sitemap-item" data-track-dest="link:Scientific editing">Scientific editing</a></li>
+                <li class="pb4" ><a href="https://www.nature.com/reprints/" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Reprints &amp; permissions">Reprints &amp;
+                    permissions</a></li>
+            </ul>
+        </div>
+        <div class="grid grid-3 mq875-grid-4 mq640-grid-6 mq480-grid-12 mb20 just-mq640-last">
+            <h3 class="h4">For readers</h3>
+            <ul class="clean-list ma0 mt10 mb6">
+                <li class="pb4"><a href="https://www.nature.com/siteindex/" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Journals A-Z">Journals A-Z</a></li>
+                <li class="pb4"><a href="https://www.nature.com/browse/" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Subject Pages">Subject Pages</a></li>
+                <li class="pb4"><a href="https://www.nature.com/protocolexchange/" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Protocol Exchange">Protocol Exchange</a></li>
+                <li class="pb4"><a href="https://blogs.nature.com" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Blogs">Blogs</a></li>
+                <li class="pb4"><a href="https://www.nature.com/nature/podcast/index.html" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Podcasts">Podcasts</a></li>
+                <li class="pb4"><a href="https://www.nature.com/webcasts/index.html" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Webcasts">Webcasts</a></li>
+                <li class="pb4"><a href="https://secure.nature.com/subscribe/nature" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Subscriptions">Subscriptions</a></li>
+                <li class="pb4"><a href="https://www.nature.com/mobile" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Mobile apps">Mobile apps</a></li>
+                <li class="pb4"><a href="https://www.nature.com/webfeeds/" data-track="click" data-track-source="sitemap-item" data-track-dest="link:RSS">RSS</a></li>
+            </ul>
+        </div>
+        <div class="grid grid-3 mq875-grid-4 mq640-grid-6 mq480-grid-12 mb20 just-mq875-last">
+            <h3 class="h4">For librarians</h3>
+            <ul class="clean-list ma0 mt10 mb6">
+                <li class="pb4"><a href="https://www.springernature.com/gp/librarians/manage-your-account" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Account administration">Account administration</a></li>
+                <li class="pb4"><a href="https://www.springernature.com/gp/librarians/licensing" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Site licenses">Site licenses</a></li>
+                <li class="pb4"><a href="https://www.nature.com/libraries/catalog/" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Catalogs">Catalogs</a></li>
+                <li class="pb4"><a href="https://www.nature.com/libraries/print_subscription/" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Print subscriptions">Print subscriptions</a></li>
+                <li class="pb4"><a href="https://www.springernature.com/gp/librarians/licensing" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Pay per view">Pay per view</a></li>
+                <li class="pb4"><a href="https://www.nature.com/libraries/open_access/" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Open access">Open access</a></li>
+                <li class="pb4"><a href="https://www.springernature.com/gp/librarians/tools-services/promote-your-content" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Promotion tools">Promotion tools</a></li>
+                <li class="pb4"><a href="https://www.nature.com/libraries/public_interfaces/" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Public interfaces">Public interfaces</a></li>
+                <li class="pb4"><a href="https://www.springernature.com/gp/librarians/tools-services/promote-your-content/user-guides" data-track="click" data-track-source="sitemap-item" data-track-dest="link:User guides">User guides</a> </li>
+                <li class="pb4"><a href="https://www.springernature.com/gp/librarians/tools-services" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Library relations">Library relations</a></li>
+                <li class="pb4"><a href="https://www.springernature.com/gp/librarians/manage-your-account/discovery" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Publisher collaborations">Publisher collaborations</a></li>
+            </ul>
+        </div>
+        <div class="grid grid-3 mq875-grid-4 mq640-grid-6 mq480-grid-12 mb20 just-mq640-last full-size-last just-mq1200-last just-mq480-last">
+            <h3 class="h4">Careers and events</h3>
+            <ul class="clean-list ma0 mt10 mb6">
+              <li class="pb4"><a href="https://www.nature.com/natureconferences/" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Natureconferences">Natureconferences</a></li>
+              <li class="pb4"><a href="https://www.nature.com/natureevents/" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Natureevents">Natureevents</a></li>
+              <li class="pb4"><a href="https://www.nature.com/naturejobs/" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Naturejobs.com">Naturejobs.com</a></li>
+            </ul>
+        </div>
+        <div class="grid grid-3 mq875-grid-4 mq640-grid-6 mq480-grid-12 mb20">
+            <h3 class="h4">Regional websites</h3>
+            <ul class="clean-list ma0 mt10 mb6">
+                <li class="pb4"><a href="https://www.natureasia.com/" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Natureasia">Natureasia</a></li>
+                <li class="pb4"><a href="http://www.naturechina.com" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Nature China">Nature China</a></li>
+                <li class="pb4"><a href="https://www.nature.com/nindia" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Nature India">Nature India</a></li>
+                <li class="pb4"><a href="https://www.natureasia.com/ja-jp/" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Nature Japan">Nature Japan</a></li>
+                <li class="pb4"><a href="https://www.natureasia.com/ko-kr/" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Nature Korea">Nature Korea</a></li>
+                <li class="pb4"><a href="https://www.nature.com/nmiddleeast/" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Nature Middle East">Nature Middle
+                    East</a></li>
+            </ul>
+        </div>
+        <div class="grid grid-3 mq875-grid-4 mq640-grid-6 mq480-grid-12 mb20 just-mq640-last just-mq875-last">
+            <h3 class="h4">Nature Research</h3>
+            <ul class="clean-list ma0 mt10 mb6">
+              <li class="pb4"><a href="https://www.nature.com/npg_/index_npg.html" data-track="click" data-track-source="sitemap-item" data-track-dest="link:About us">About us</a></li>
+              <li class="pb4"><a href="https://www.nature.com/npg_/work" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Work for us">Work for us</a></li>
+              <li class="pb4"><a href="https://www.nature.com/help/" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Help">Help</a></li>
+              <li class="pb4"><a href="https://www.nature.com/npg_/contact/" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Contact us">Contact us</a></li>
+              <li class="pb4"><a href="https://www.nature.com/info/privacy.html" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Privacy Policy">Privacy Policy</a></li>
+              <li class="pb4"><a href="https://www.nature.com/info/cookies.html" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Use of cookies">Use of cookies</a></li>
+              <li class="pb4"><a href="https://www.nature.com/info/legal_notice.html" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Legal notice">Legal notice</a></li>
+              <li class="pb4"><a href="https://www.nature.com/info/accessibility_statement.html" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Accessibility statement">Accessibility statement</a></li>
+              <li class="pb4"><a href="https://www.nature.com/info/tandc.html" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Terms &amp; Conditions">Terms &amp; Conditions</a></li>
+              <li class="pb4"><a href="https://www.nature.com/info/partners.html" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Partners">Partners</a></li>
+            </ul>
+        </div>
+        <div class="grid grid-3 mq875-grid-4 mq640-grid-6 mq480-grid-12 mb20">
+            <h3 class="h4">For advertisers</h3>
+            <ul class="clean-list ma0 mt10 mb6">
+                <li class="pb4"><a href="https://www.nature.com/advertising" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Advertising options">Advertising
+                    options</a></li>
+                <li class="pb4"><a href="https://www.nature.com/advertising/audience" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Journal audience">Journal
+                    audience</a></li>
+                <li class="pb4"><a href="https://www.nature.com/natureevents/science/organizers" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Event advertising">Event advertising</a></li>
+                <li class="pb4"><a href="https://www.nature.com/naturejobs/science/orders/new" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Job posts">Job posts</a></li>
+                <li class="pb4"><a href="https://www.nature.com/advertising/contact" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Contact representative">Contact
+                    representative</a></li>
+            </ul>
+        </div>
+        <div class="grid grid-3 mq875-grid-4 mq640-grid-6 mq480-grid-12 mb20 just-mq640-last full-size-last just-mq1200-last just-mq480-last">
+            <h3 class="h4">For press</h3>
+            <ul class="clean-list ma0 mt10 mb6">
+                <li class="pb4"><a href="http://press.nature.com/" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Press site">Press site</a></li>
+                <li class="pb4"><a href="https://www.nature.com/npg_/press_room/index.html" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Press room">Press room</a></li>
+                <li class="pb4"><a href="http://press.nature.com/contact-us" data-track="click" data-track-source="sitemap-item" data-track-dest="link:Contact press office">Contact press office</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="grid grid-12 last mb30">
+        <img src="/static/images/sn-logo.4368f3b1.svg" alt="Springer Nature"/>
+        <small class="block pt15 pb6 ma0 text-gray-light text11">© 2018 Macmillan Publishers Limited, part of Springer Nature. All rights reserved.</small>
+    </div>
+</div>
+
+
+    </div>
+</footer>
+
+
+    <script>
+        var readingCompanionData = {
+  "sections" : [ {
+    "id" : "abstract",
+    "title" : "Abstract"
+  }, {
+    "id" : "change-history",
+    "title" : "Change history"
+  }, {
+    "id" : "accessions",
+    "title" : "Accessions"
+  }, {
+    "id" : "references",
+    "title" : "References"
+  }, {
+    "id" : "acknowledgements",
+    "title" : "Acknowledgements"
+  }, {
+    "id" : "author-information",
+    "title" : "Author information"
+  }, {
+    "id" : "integrated-supplementary-information",
+    "title" : "Integrated supplementary information"
+  }, {
+    "id" : "supplementary-information",
+    "title" : "Supplementary information"
+  }, {
+    "id" : "article-comments",
+    "title" : "Comments",
+    "extraClass" : "hide"
+  } ],
+  "figures" : [ {
+    "num" : 1,
+    "index" : 1,
+    "imagePaths" : [ "//media.springernature.com/m685/nature-assets/nmeth/journal/v14/n4/images/nmeth.4179-F1.jpg" ],
+    "title" : "Figure 1: Seq-Well: a portable, low-cost platform for high-throughput single-cell RNA-seq of low-input samples.",
+    "link" : "/articles/nmeth.4179/figures/1",
+    "anchor" : "#f1",
+    "extendedData" : false
+  }, {
+    "num" : 2,
+    "index" : 2,
+    "imagePaths" : [ "//media.springernature.com/m685/nature-assets/nmeth/journal/v14/n4/images/nmeth.4179-F2.jpg" ],
+    "title" : "Figure 2: Combined image cytometry and scRNA-seq of human PBMCs.",
+    "link" : "/articles/nmeth.4179/figures/2",
+    "anchor" : "#f2",
+    "extendedData" : false
+  }, {
+    "num" : 3,
+    "index" : 3,
+    "imagePaths" : [ "//media.springernature.com/m685/nature-assets/nmeth/journal/v14/n4/images/nmeth.4179-F3.jpg" ],
+    "title" : "Figure 3: Sequencing of TB-exposed macrophages in a BSL3 facility using Seq-Well.",
+    "link" : "/articles/nmeth.4179/figures/3",
+    "anchor" : "#f3",
+    "extendedData" : false
+  }, {
+    "num" : 1,
+    "index" : 4,
+    "imagePaths" : [ "//media.springernature.com/m685/nature-assets/nmeth/journal/v14/n4/images_hires/nmeth.4179-SF1.jpg" ],
+    "title" : "Supplementary Figure 1: Open Array Gene and Transcript Capture",
+    "link" : "/articles/nmeth.4179/figures/4",
+    "anchor" : "#f4",
+    "extendedData" : true
+  }, {
+    "num" : 2,
+    "index" : 5,
+    "imagePaths" : [ "//media.springernature.com/m685/nature-assets/nmeth/journal/v14/n4/images_hires/nmeth.4179-SF2.jpg" ],
+    "title" : "Supplementary Figure 2: Seq-Well Experimental Workflow (see Seq-Well Protocol – Ref. 21)",
+    "link" : "/articles/nmeth.4179/figures/5",
+    "anchor" : "#f5",
+    "extendedData" : true
+  }, {
+    "num" : 3,
+    "index" : 6,
+    "imagePaths" : [ "//media.springernature.com/m685/nature-assets/nmeth/journal/v14/n4/images_hires/nmeth.4179-SF3.jpg" ],
+    "title" : "Supplementary Figure 3: Bead And Cell Loading Efficiency",
+    "link" : "/articles/nmeth.4179/figures/6",
+    "anchor" : "#f6",
+    "extendedData" : true
+  }, {
+    "num" : 4,
+    "index" : 7,
+    "imagePaths" : [ "//media.springernature.com/m685/nature-assets/nmeth/journal/v14/n4/images_hires/nmeth.4179-SF4.jpg" ],
+    "title" : "Supplementary Figure 4: PDMS Surface Chemistry Functionalization Protocol and Differential Functionalization of Microwell Arrays",
+    "link" : "/articles/nmeth.4179/figures/7",
+    "anchor" : "#f7",
+    "extendedData" : true
+  }, {
+    "num" : 5,
+    "index" : 8,
+    "imagePaths" : [ "//media.springernature.com/m685/nature-assets/nmeth/journal/v14/n4/images_hires/nmeth.4179-SF5.jpg" ],
+    "title" : "Supplementary Figure 5: Microwell Sealing With Semipermeable Membrane",
+    "link" : "/articles/nmeth.4179/figures/8",
+    "anchor" : "#f8",
+    "extendedData" : true
+  }, {
+    "num" : 6,
+    "index" : 9,
+    "imagePaths" : [ "//media.springernature.com/m685/nature-assets/nmeth/journal/v14/n4/images_hires/nmeth.4179-SF6.jpg" ],
+    "title" : "Supplementary Figure 6: Read Mapping Quality",
+    "link" : "/articles/nmeth.4179/figures/9",
+    "anchor" : "#f9",
+    "extendedData" : true
+  }, {
+    "num" : 7,
+    "index" : 10,
+    "imagePaths" : [ "//media.springernature.com/m685/nature-assets/nmeth/journal/v14/n4/images_hires/nmeth.4179-SF7.jpg" ],
+    "title" : "Supplementary Figure 7: Comparison of Gene and Transcript Capture and Percent Contamination Among Massively-Parallel scRNA-Seq Methods Using Mouse and Human Cell Lines",
+    "link" : "/articles/nmeth.4179/figures/10",
+    "anchor" : "#f10",
+    "extendedData" : true
+  }, {
+    "num" : 8,
+    "index" : 11,
+    "imagePaths" : [ "//media.springernature.com/m685/nature-assets/nmeth/journal/v14/n4/images_hires/nmeth.4179-SF8.jpg" ],
+    "title" : "Supplementary Figure 8: Transcript Cutoff For Species-Mixing Validation",
+    "link" : "/articles/nmeth.4179/figures/11",
+    "anchor" : "#f11",
+    "extendedData" : true
+  }, {
+    "num" : 9,
+    "index" : 12,
+    "imagePaths" : [ "//media.springernature.com/m685/nature-assets/nmeth/journal/v14/n4/images_hires/nmeth.4179-SF9.jpg" ],
+    "title" : "Supplementary Figure 9: Comparison Of In-Silico HEK293 Populations With Bulk Populations",
+    "link" : "/articles/nmeth.4179/figures/12",
+    "anchor" : "#f12",
+    "extendedData" : true
+  }, {
+    "num" : 10,
+    "index" : 13,
+    "imagePaths" : [ "//media.springernature.com/m685/nature-assets/nmeth/journal/v14/n4/images_hires/nmeth.4179-SF10.jpg" ],
+    "title" : "Supplementary Figure 10: Mapping Lineage Defining Transcripts To PBMC Clusters",
+    "link" : "/articles/nmeth.4179/figures/13",
+    "anchor" : "#f13",
+    "extendedData" : true
+  }, {
+    "num" : 11,
+    "index" : 14,
+    "imagePaths" : [ "//media.springernature.com/m685/nature-assets/nmeth/journal/v14/n4/images_hires/nmeth.4179-SF11.jpg" ],
+    "title" : "Supplementary Figure 11: Heatmap Of PBMCs",
+    "link" : "/articles/nmeth.4179/figures/14",
+    "anchor" : "#f14",
+    "extendedData" : true
+  }, {
+    "num" : 12,
+    "index" : 15,
+    "imagePaths" : [ "//media.springernature.com/m685/nature-assets/nmeth/journal/v14/n4/images_hires/nmeth.4179-SF12.jpg" ],
+    "title" : "Supplementary Figure 12: Read Mapping Quality In PBMCs",
+    "link" : "/articles/nmeth.4179/figures/15",
+    "anchor" : "#f15",
+    "extendedData" : true
+  }, {
+    "num" : 13,
+    "index" : 16,
+    "imagePaths" : [ "//media.springernature.com/m685/nature-assets/nmeth/journal/v14/n4/images_hires/nmeth.4179-SF13.jpg" ],
+    "title" : "Supplementary Figure 13: Comparison Of Human PBMC Gene And Transcript Capture With Other Massively-Parallel scRNA-Seq Methods",
+    "link" : "/articles/nmeth.4179/figures/16",
+    "anchor" : "#f16",
+    "extendedData" : true
+  }, {
+    "num" : 14,
+    "index" : 17,
+    "imagePaths" : [ "//media.springernature.com/m685/nature-assets/nmeth/journal/v14/n4/images_hires/nmeth.4179-SF14.jpg" ],
+    "title" : "Supplementary Figure 14: T-SNE Visualization Of Exposed And Unexposed Macrophages Using A 5,000 Transcript Cutoff",
+    "link" : "/articles/nmeth.4179/figures/17",
+    "anchor" : "#f17",
+    "extendedData" : true
+  }, {
+    "num" : 15,
+    "index" : 18,
+    "imagePaths" : [ "//media.springernature.com/m685/nature-assets/nmeth/journal/v14/n4/images_hires/nmeth.4179-SF15.jpg" ],
+    "title" : "Supplementary Figure 15: Quality By Cluster Among TB Macrophages",
+    "link" : "/articles/nmeth.4179/figures/18",
+    "anchor" : "#f18",
+    "extendedData" : true
+  } ],
+  "references" : [ {
+    "id" : "1",
+    "title" : "<span><span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Shalek, A.K.</span></span> <i>et al.</i> <i>Nature</i> <b>498</b>, <span>236</span>–<span>240</span> (<span>2013</span>).</span>",
+    "schemaType" : "Article"
+  }, {
+    "id" : "2",
+    "title" : "<span><span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Lohr, J.G.</span></span> <i>et al.</i> <i>Nat. Biotechnol.</i> <b>32</b>, <span>479</span>–<span>484</span> (<span>2014</span>).</span>",
+    "schemaType" : "Article"
+  }, {
+    "id" : "3",
+    "title" : "<span><span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Shalek, A.K.</span></span> <i>et al.</i> <i>Nature</i> <b>510</b>, <span>363</span>–<span>369</span> (<span>2014</span>).</span>",
+    "schemaType" : "Article"
+  }, {
+    "id" : "4",
+    "title" : "<span><span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Tirosh, I.</span></span> <i>et al.</i> <i>Science</i> <b>352</b>, <span>189</span>–<span>196</span> (<span>2016</span>).</span>",
+    "schemaType" : "Article"
+  }, {
+    "id" : "5",
+    "title" : "<span><span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Hashimshony, T.</span></span>, <span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Wagner, F.</span></span>, <span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Sher, N.</span></span> &amp; <span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Yanai, I.</span></span> <i>Cell Rep.</i> <b>2</b>, <span>666</span>–<span>673</span> (<span>2012</span>).</span>",
+    "schemaType" : "Article"
+  }, {
+    "id" : "6",
+    "title" : "<span><span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Bendall, S.C.</span></span> <i>et al.</i> <i>Science</i> <b>332</b>, <span>687</span>–<span>696</span> (<span>2011</span>).</span>",
+    "schemaType" : "Article"
+  }, {
+    "id" : "7",
+    "title" : "<span><span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Buenrostro, J.D.</span></span> <i>et al.</i> <i>Nature</i> <b>523</b>, <span>486</span>–<span>490</span> (<span>2015</span>).</span>",
+    "schemaType" : "Article"
+  }, {
+    "id" : "8",
+    "title" : "<span><span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Smallwood, S.A.</span></span> <i>et al.</i> <i>Nat. Methods</i> <b>11</b>, <span>817</span>–<span>820</span> (<span>2014</span>).</span>",
+    "schemaType" : "Article"
+  }, {
+    "id" : "9",
+    "title" : "<span><span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Zeisel, A.</span></span> <i>et al.</i> <i>Science</i> <b>347</b>, <span>1138</span>–<span>1142</span> (<span>2015</span>).</span>",
+    "schemaType" : "Article"
+  }, {
+    "id" : "10",
+    "title" : "<span><span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Treutlein, B.</span></span> <i>et al.</i> <i>Nature</i> <b>509</b>, <span>371</span>–<span>375</span> (<span>2014</span>).</span>",
+    "schemaType" : "Article"
+  }, {
+    "id" : "11",
+    "title" : "<span><span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Klein, A.M.</span></span> <i>et al.</i> <i>Cell</i> <b>161</b>, <span>1187</span>–<span>1201</span> (<span>2015</span>).</span>",
+    "schemaType" : "Article"
+  }, {
+    "id" : "12",
+    "title" : "<span><span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Macosko, E.Z.</span></span> <i>et al.</i> <i>Cell</i> <b>161</b>, <span>1202</span>–<span>1214</span> (<span>2015</span>).</span>",
+    "schemaType" : "Article"
+  }, {
+    "id" : "13",
+    "title" : "<span><span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Fan, H.C.</span></span>, <span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Fu, G.K.</span></span> &amp; <span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Fodor, S.P.</span></span> <i>Science</i> <b>347</b>, <span>1258367</span> (<span>2015</span>).</span>",
+    "schemaType" : "Article"
+  }, {
+    "id" : "14",
+    "title" : "<span><span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Bose, S.</span></span> <i>et al.</i> <i>Genome Biol.</i> <b>16</b>, <span>120</span> (<span>2015</span>).</span>",
+    "schemaType" : "Article"
+  }, {
+    "id" : "15",
+    "title" : "<span><span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Yuan, J.</span></span> &amp; <span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Sims, P.A.</span></span> <i>Sci. Rep.</i> <b>6</b>, <span>33883</span> (<span>2016</span>).</span>",
+    "schemaType" : "Article"
+  }, {
+    "id" : "16",
+    "title" : "<span><span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">DeKosky, B.J.</span></span> <i>et al.</i> <i>Nat. Biotechnol.</i> <b>31</b>, <span>166</span>–<span>169</span> (<span>2013</span>).</span>",
+    "schemaType" : "Article"
+  }, {
+    "id" : "17",
+    "title" : "<span><span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Ilicic, T.</span></span> <i>et al.</i> <i>Genome Biol.</i> <b>17</b>, <span>29</span> (<span>2016</span>).</span>",
+    "schemaType" : "Article"
+  }, {
+    "id" : "18",
+    "title" : "<span><span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Yamanaka, Y.J.</span></span> <i>et al.</i> <i>Integr. Biol. (Camb.)</i> <b>4</b>, <span>1175</span>–<span>1184</span> (<span>2012</span>).</span>",
+    "schemaType" : "Article"
+  }, {
+    "id" : "19",
+    "title" : "<span><span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Han, Q.</span></span> <i>et al.</i> <i>Proc. Natl. Acad. Sci. USA</i> <b>109</b>, <span>1607</span>–<span>1612</span> (<span>2012</span>).</span>",
+    "schemaType" : "Article"
+  }, {
+    "id" : "20",
+    "title" : "<span><span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Steinberg, G.</span></span>, <span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Stromsborg, K.</span></span>, <span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Thomas, L.</span></span>, <span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Barker, D.</span></span> &amp; <span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Zhao, C.</span></span> <i>Biopolymers</i> <b>73</b>, <span>597</span>–<span>605</span> (<span>2004</span>).</span>",
+    "schemaType" : "Article"
+  }, {
+    "id" : "21",
+    "title" : "<span><span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Gierahn, T.</span></span> <i>et al.</i> <cite>Seq-Well protocol</cite>. <i>Protocol Exchange</i> <a href=\"https://doi.org/10.1038/protex.2017.006a\">http://dx.doi.org/10.1038/protex.2017.006a</a> (<span>2017</span>).</span>",
+    "schemaType" : "Article"
+  }, {
+    "id" : "22",
+    "title" : "<span><span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Roederer, M.</span></span> <i>Current Protocols in Cytometry</i> (eds. Robinson, J.P. <i>et al.</i>) Unit 1.14 (Wiley, <span>2002</span>).</span>",
+    "schemaType" : "Article"
+  }, {
+    "id" : "23",
+    "title" : "<span><span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Satija, R.</span></span>, <span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Farrell, J.A.</span></span>, <span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Gennert, D.</span></span>, <span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Schier, A.F.</span></span> &amp; <span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Regev, A.</span></span> <i>Nat. Biotechnol.</i> <b>33</b>, <span>495</span>–<span>502</span> (<span>2015</span>).</span>",
+    "schemaType" : "Article"
+  }, {
+    "id" : "24",
+    "title" : "<span><span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Buettner, F.</span></span> <i>et al.</i> <i>Nat. Biotechnol.</i> <b>33</b>, <span>155</span>–<span>160</span> (<span>2015</span>).</span>",
+    "schemaType" : "Article"
+  }, {
+    "id" : "25",
+    "title" : "<span><span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Levine, J.H.</span></span> <i>et al.</i> <i>Cell</i> <b>162</b>, <span>184</span>–<span>197</span> (<span>2015</span>).</span>",
+    "schemaType" : "Article"
+  }, {
+    "id" : "26",
+    "title" : "<span><span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Xu, C.</span></span> &amp; <span itemprop=\"author\" itemscope=\"itemscope\" itemtype=\"http://schema.org/Person\"><span itemprop=\"name\">Su, Z.</span></span> <i>Bioinformatics</i> <b>31</b>, <span>1974</span>–<span>1980</span> (<span>2015</span>).</span>",
+    "schemaType" : "Article"
+  } ],
+  "hasAccess" : false,
+  "hasNumericReferences" : true
+};
+    </script>
+
+
+
+<script>
+    if ('localStorage' in window) {
+        window.SN = window.SN || {};
+        window.SN.fontLoader = window.SN.fontLoader || {};
+        window.SN.fontLoader.staticFontLocation = "/static/fonts/lora-source-sans-bundle.woff.json";
+    }
+
+</script>
+<script src="/static/js/mosaic.5fa80fe4.js"></script>
+<script>
+
+    var idp = {
+        onProofChanged: function () {
+            location.reload()
+        },
+         institutionalLogin: function (names) {
+             if (names.length && false) {
+                if (document.querySelector('.js-main-column')) {
+                    var accessMessage = document.createElement('div');
+                    accessMessage.innerHTML = '<p style="transform: translateY(-5px)" class="text14 block mb0 pb10 text-center">Access provided by ' + names[0] + '</p>';
+                    document.querySelector('.js-main-column').prepend(accessMessage);
+                }
+            } 
+        },
+        hasNatureUserProof: function (hasProof) {
+            if (!hasProof) {
+                document.getElementById("my-account").setAttribute("style", "display: none;");
+                document.getElementById("login-button").setAttribute("style", "");
+            }
+        }
+    }
+</script>
+<script src="https://verify.nature.com/verify/nature.min.js"></script>
+<noscript>
+    <img src="https://verify.nature.com/verify/nature.png" alt="" width="0" height="0"/>
+    <img alt="" id="DCSIMG" width="1" height="1" src="//statse.webtrendslive.com/dcs0zztfg00000s969s37qoal_2f6z/njs.gif?dcsuri=/nojavascript&amp;WT.js=No&amp;WT.tv=10.2.55">
+</noscript>
+<script>
+    var appendExtraFlagsToLinks = function(params) {
+        $('a').filter(function(_, x) {
+            var href = $(x).attr('href');
+            return href && href.startsWith('/');
+        }).each(function(_, x) {
+            var $x = $(x);
+            var url = new URL('http://temp.com' + $x.attr('href'));
+            params.forEach(function(param) {
+                url.searchParams.set(param[0], param[1]);
+            });
+            $x.attr('href', url.pathname + url.search + url.hash);
+        });
+    };
+
+    var transformNatureAssetSourcesToDraft = function() {
+        var regex = /\/nature-assets\//;
+
+        var targets = [['img', 'src'], ['a', 'href']];
+
+        targets.forEach(function(target) {
+            $(target[0]).filter(function(_, x) {
+                return regex.test($(x).attr(target[1]));
+            }).each(function(_, x) {
+                var $x = $(x);
+                $x.attr(target[1], $x.attr(target[1]).replace('nature-assets', 'nature-assets-draft'));
+            });
+        });
+    };
+
+    if (window.URLSearchParams) {
+        var params = new URLSearchParams(location.search.slice(1));
+        var proof = params.get('proof');
+        var platform = params.get('platform');
+        var draft = params.get('draft');
+        if (proof || platform || draft) {
+            appendExtraFlagsToLinks(
+                [['proof', proof], ['platform', platform], ['draft', draft]].filter(function(pair) {
+                    return pair[1];
+                }));
+        }
+        if (proof || draft) {
+            transformNatureAssetSourcesToDraft();
+        }
+    }
+</script>
+
+<script src="//content.readcube.com/ping?doi=10.1038/nmeth.4179&amp;format=js&amp;last_modified=2017-10-13" async></script>
+<img src="/platform/track/preview/nmeth.4179" width="1" height="1" alt="" class="visually-hidden"/>
+</body>
+</html>

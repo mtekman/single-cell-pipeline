@@ -1,0 +1,4 @@
+MTB = Mycobacterium tuberculosis cells
+PBMC = Human peripheral blood mononuclear cells 
+
+This data uses UMI's and is therefore of interest to us.

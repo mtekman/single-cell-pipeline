@@ -1,0 +1,45 @@
+Sample Processing Pipeline(s): 
+
+Sample 1 – Species Mixing 1
+
+A total of 200 ?L of a single-cell suspension containing 5,000 HEK and 5,000 NIH/3T3 cells was applied to the surface of two nanowell devices loaded with beads (Raw Files). Alignment to a combined hg19/mm10 reference genome was performed using the STAR aligner and DropSeqTools (www.mccarrolllab.com/dropseq). A total of 60,000 beads collected from the array, of which 9,600 beads were pooled for subsequent processing and sequencing. Among the XX barcodes with the most aligned reads, we identified 254 high-quality cells with greater than 2,000 transcript (Processed Data Files). Further, cells with fewer than 2,000 total transcripts were considered indeterminate, while any cell with greater than 5,000 total transcripts and more than 1,000 non-mouse or non-human transcripts was considered a multiplet. 
+
+Raw Files: SpeciesMix1_R1.fastq.gz, SpeciesMix1_R2.fastq.gz
+Processed Data Files: SpeciesMixing1_HumanUMI.txt, SpeciesMixing1_MouseUMI.txt, SpeciesMixing1_HumanReads.txt, and SpeciesMixing1_MouseReads.txt
+
+Sample 2 – Species Mixing 2
+
+A total of 200 ?L of a single-cell suspension containing 5,000 HEK and 5,000 NIH/3T3 cells was applied to the surface of two nanowell devices loaded with beads. Of the 25,000 beads collected from this array, 15,000 beads were pooled for subsequent processing and sequencing (Raw Files). Alignment to a combined hg19/mm10 refreence was performed using the STAR aligner and DropSeqTools (www.mccarrolllab.com/dropseq). Among the XX barcodes with the most aligned reads, we identified 331 high-quality cells with greater than 10,000 transcripts, greater than 2,000 genes, and greater than 90% transcript purity (i.e. > 90% of transcripts from the same species) (Processed Data Files). 
+
+Raw Files: SpeciesMix2_R1.fastq.gz, SpeciesMix2_R2.fastq.gz
+Processed Data Files: SpeciesMixing2_HumanUMI.txt, SpeciesMixing2_MouseUMI.txt, SpeciesMixing2_HumanReads.txt, SpeciesMixing2_MouseReads.txt. 
+
+Sample 3 – HEK Single Cells
+
+A total of 10,000 HEK293 cells were applied to a Seq-Well device. Sequencing libraries were prepared according to the Seq-Well protocol (Gierahn et al. Nature Methods 2017) and sequenced on the same sequencing run using separate Nextera N700 indices for individual tagmentation products (Raw Files). Reads were aligned to hg19 using STAR and cell barcodes and were collapsed using DropSeq Tools (www.mccarrolllab.com/dropseq). For each indexed library, 6000 barcodes with the highest number of aligned reads were output and were merged to yield 12,000 total barcodes. From this merged file we identified 1,453 cells with greater than 3,000 transcripts were retained. (Processed Data Files).  
+
+Raw Files: HEK_SingleCells1_R1.fastq.gz, HEK_SingleCells1_R2.fastq.gz, HEK_SingleCells2_R1.fastq.gz, HEK_SingleCells2_R2.fastq.gz
+Processed Data File: HEK_SingleCells.txt
+
+Sample 4 – HEK Population
+
+A total of 40,000 HEK293 cells were combined with 40,000 mRNA capture beads in a PCR tube containing lysis buffer and rotated end-over-end for 1 hour. Two separate sequencing libraries from separate tagmentation produts were prepared from 12,000 mRNA capture beads following reverse transcription and PCR amplification (Raw Files). To generate the processed data file (HEK_Populations.txt), the 6,000 barcodes with the highest aligned read counts were output from DropSeq tools. A total of 6,000 barcodes from each tagementation reaction were merged and then combined (e.g. row sums across genes) to create a single population (Processed Data File). 
+
+Raw Files: HEK_Populations1_R1.fastq.gz, HEK_Populations1_R2.fastq.gz, HEK_Populations2_R1.fastq.gz, HEK_Populations2_R2.fastq.gz
+Processed Data File: HEK_Population.txt
+
+Sample 5 – PBMC Sample
+
+A total of 10,000 PBMCs were applied to each of 3 separate arrays. Sequencing libraries were prepared according to the Seq-Well protocol (Gierahn et al., Nature Methods 2017) and sequenced across 6 separate NextSeq 500 runs (Raw Files). Alignment to hg19 was separately performed for each sequencing run using the STAR alignment package. Cellbarcodes and UMIs were collapsed using DropSeq Tools and digitial gene expression matrices were generated for the 4,000 barcodes with the highest number of aligned reads. For each sequencing run, we retained cell barcodes with at least 10,000 mapped reads, 1,000 transcripts (UMIs), and 500 detected genes. Within each sequencing run, we analyzed a total of 6,713 that were detected in at least 2.5% of filtered cells within each of the 6 sequencing runs (Processed Data File). 
+
+Raw Files: PBMC1_R1.fastq.gz, PBMC1_R2.fastq.gz, PBMC2_R1.fastq.gz, PBMC2_R2.fastq.gz, PBMC3_R1.fastq.gz, PBMC3_R2.fastq.gz, PBMC4_R1.fastq.gz, PBMC4_R2.fastq.gz, PBMC5_R1.fastq.gz, PBMC5_R2.fastq.gz, PBMC6_R1.fastq.gz, PBMC_R2.fastq.gz
+Processed Data File: PBMC.txt
+
+
+Sample 6 – Monocyte-derived Macrophage (Mtb Exposed, MOI=10) & Sample 7 – Monocyte-derived Macrophage (Mtb unexposed)
+
+A total of 20,000 monocyte-derived macrophages Fastq files ( ) were aligned to hg19 using the STAR aligner and Dropseq Tools (www.mccarrolllab.com/dropseq). For each array two sequencing runs were performed, a total of four NextSeq Runs (Raw Files).  For each sequencing run, we generated digital gene expression matrices from the 10,000 barcodes with the greatest number of aligned reads. Within each dge matrix separately, we retained only those barcodes with 5,000 umis. Then, within each dge matrix we retained genes detected in at least 5% of detected cells. Filtered gene expression matrices were then combined to yield 4,638 macrophages with greater than 5,000 transcript and 9,381 genes detected in at least 5% of cells across 4 sequencing runs (Processed Data File). 
+
+Raw Files: TBExposed1_R1.fastq.gz, TBExposed1_R2.fastq.gz, TBExposed2_R1.fastq.gz, TBExposed2_R2.fastq.gz, TBUnexposed1_R1.fastq.gz, TBUNExposed1_R2.fastq.gz, TBUnexposed2_R1.fastq.gz, TBUnexposed2_R2.fastq.gz
+
+Processed Data File: MTB.txt

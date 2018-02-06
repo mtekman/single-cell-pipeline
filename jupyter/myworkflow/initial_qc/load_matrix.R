@@ -4,7 +4,7 @@ library(scater)
 # Set the raw data and save/load it
 umi <- NULL
 if (!exists("generate_matrix")){
-   generate_matrix = T
+   generate_matrix = F
 }
 
 if (!exists("matrix_destination")){

@@ -1,5 +1,5 @@
-library(SingleCellExperiment)
-library(scater)
+suppressWarnings(library(SingleCellExperiment))
+suppressWarnings(library(scater))
 
 # Set the raw data and save/load it
 umi <- NULL

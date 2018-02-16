@@ -76,7 +76,12 @@ if (is.null(umi) && generate_matrix){
             "transcript_biotype",           # Trans type
             "description",                  # Gene description
             "band",                         # Karyotype band
-            "refseq_mrna"        
+            "refseq_mrna",
+            "go_id",                        # Go Term accession (cellular domains)
+            "go_linkage_type",              # Go Term evidence code
+            "name_1006",                    # Go Term name
+            "definition_1006",              # Go Term definition
+            "namespace_1003"                # Go domain             
         ),
         feature_symbol = "mgi_symbol",
         feature_id = "ensembl_gene_id",
